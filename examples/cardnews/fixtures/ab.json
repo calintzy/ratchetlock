@@ -1,0 +1,1156 @@
+{
+  "evalId": "eval-kI5-2026-07-21T13:46:44",
+  "results": {
+    "version": 3,
+    "timestamp": "2026-07-21T13:46:44.615Z",
+    "prompts": [
+      {
+        "raw": "아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n{{signal}}",
+        "label": "prompt.txt: 아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n{{signal}}",
+        "id": "413a263b66171fcdf0b24b95a1c59142e1dbb09aaadf2657d2b1f3e3a6fb136d",
+        "provider": "exec: bash claude_provider.sh",
+        "metrics": {
+          "score": 3.75,
+          "testPassCount": 0,
+          "testFailCount": 5,
+          "testErrorCount": 0,
+          "assertPassCount": 0,
+          "assertFailCount": 5,
+          "totalLatencyMs": 126871,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 5,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0
+        }
+      },
+      {
+        "raw": "아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n{{signal}}\n\n[출력 형식 절대 규칙 — 위반 시 산출물 폐기]\n- 출력의 첫 문자는 반드시 `{`, 마지막 문자는 반드시 `}`다.\n- 인사말·작업 설명·서두·맺음말을 한 글자도 출력하지 않는다.\n- 마크다운 코드펜스(```)를 출력하지 않는다. JSON 원문만 출력한다.",
+        "label": "prompt_v2.txt: 아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n{{signal}}\n\n[출력 형식 절대 규칙 — 위반 시 산출물 폐기]\n- 출력의 첫 문자는 반드시 `{`, 마지막 문자는 반드시 `}`다.\n- 인사말·작업 설명·서두·맺음말을 한 글자도 출력하지 않는다.\n- 마크다운 코드펜스(```)를 출력하지 않는다. JSON 원문만 출력한다.",
+        "id": "2f8963177e300bba135faad034d77c5cb01ce4dddbe738570f770529ed2ed19f",
+        "provider": "exec: bash claude_provider.sh",
+        "metrics": {
+          "score": 4.75,
+          "testPassCount": 4,
+          "testFailCount": 1,
+          "testErrorCount": 0,
+          "assertPassCount": 4,
+          "assertFailCount": 1,
+          "totalLatencyMs": 118474,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 5,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0
+        }
+      }
+    ],
+    "results": [
+      {
+        "cost": 0,
+        "error": "'저자 주장' 한정어 소실(프레이밍 왜곡)",
+        "gradingResult": {
+          "pass": false,
+          "score": 0.75,
+          "reason": "'저자 주장' 한정어 소실(프레이밍 왜곡)",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0.75,
+              "reason": "'저자 주장' 한정어 소실(프레이밍 왜곡)",
+              "assertion": {
+                "type": "javascript",
+                "value": "file://asserts.js"
+              }
+            }
+          ]
+        },
+        "id": "2801622a-24ba-4d3d-9c1c-0a4a05b3cec3",
+        "latencyMs": 23559,
+        "namedScores": {},
+        "prompt": {
+          "raw": "아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n**① OmniRoute — Claude Code·Cursor 호환 무료 AI 게이트웨이, MCP/A2A 내장**\ndiegosouzapw/OmniRoute(MIT, TypeScript)가 오늘 GitHub Trending +1,107로 급등했다. 268개 이상 제공자(무료 50개 이상)·500개 이상 모델을 단일 엔드포인트로 통합하며, 쿼터 인식 자동 폴백·RTK+Caveman 압축(15~95% 토큰 절감, 저자 주장)·95개 MCP 도구·A2A 프로토콜을 내장한다. 500명 이상 기여자, 21,000개 이상 테스트 커버리지.\n영향: Claude Code 비용 초과 시 자동 폴백 라우터로 활용 가능 — Ryan 스택(Next.js·TypeScript) 친화적 MIT 라이선스, 검토 후보.\n\n[출력 형식 절대 규칙 — 위반 시 산출물 폐기]\n- 출력의 첫 문자는 반드시 `{`, 마지막 문자는 반드시 `}`다.\n- 인사말·작업 설명·서두·맺음말을 한 글자도 출력하지 않는다.\n- 마크다운 코드펜스(```)를 출력하지 않는다. JSON 원문만 출력한다.",
+          "label": "prompt_v2.txt: 아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n{{signal}}\n\n[출력 형식 절대 규칙 — 위반 시 산출물 폐기]\n- 출력의 첫 문자는 반드시 `{`, 마지막 문자는 반드시 `}`다.\n- 인사말·작업 설명·서두·맺음말을 한 글자도 출력하지 않는다.\n- 마크다운 코드펜스(```)를 출력하지 않는다. JSON 원문만 출력한다.",
+          "config": {}
+        },
+        "promptId": "2f8963177e300bba135faad034d77c5cb01ce4dddbe738570f770529ed2ed19f",
+        "promptIdx": 1,
+        "provider": {
+          "id": "exec: bash claude_provider.sh",
+          "label": ""
+        },
+        "response": {
+          "output": "{\"title\":\"AI 서비스 268개, 무료로 하나로 묶는 도구\",\"subtitle\":\"쿼터 초과 시 자동으로 갈아타는 AI 게이트웨이\",\"body\":\"OmniRoute는 여러 AI 서비스를 하나의 창구로 묶어주는 무료 오픈소스 도구입니다. ==268개가 넘는 AI 제공자와 500개가 넘는 모델==을 한 곳에서 쓸 수 있고, 쓸 수 있는 양(쿼터)이 다 떨어지면 자동으로 다른 서비스로 바꿔줍니다. 개발자들이 많이 쓰는 도구인 Claude Code, Cursor와도 함께 쓸 수 있게 만들어졌습니다.\",\"impact\":\"AI 서비스 이용 한도가 초과됐을 때 자동으로 다른 서비스로 전환해주는 대안으로 활용할 수 있어, 비용 관리에 도움이 될 것으로 보입니다.\",\"link\":\"https://github.com/diegosouzapw/OmniRoute\",\"category\":\"에이전트 · MCP\",\"context\":[\"오늘 GitHub Trending에서 순위가 1,107 상승\",\"268개 이상 제공자(그중 50개 이상 무료), 500개 이상 모델 지원\",\"MCP 도구 95개와 A2A 프로토콜을 기본 내장\",\"기여자 500명 이상, 테스트 21,000개 이상\"],\"duckNote\":\"쿼터 다 떨어져도 걱정 없이 자동으로 갈아타준댔덬\"}"
+        },
+        "score": 0.75,
+        "success": false,
+        "testCase": {
+          "description": "07-21 ① OmniRoute (저자 주장 한정어 포함)",
+          "vars": {
+            "signal": "**① OmniRoute — Claude Code·Cursor 호환 무료 AI 게이트웨이, MCP/A2A 내장**\ndiegosouzapw/OmniRoute(MIT, TypeScript)가 오늘 GitHub Trending +1,107로 급등했다. 268개 이상 제공자(무료 50개 이상)·500개 이상 모델을 단일 엔드포인트로 통합하며, 쿼터 인식 자동 폴백·RTK+Caveman 압축(15~95% 토큰 절감, 저자 주장)·95개 MCP 도구·A2A 프로토콜을 내장한다. 500명 이상 기여자, 21,000개 이상 테스트 커버리지.\n영향: Claude Code 비용 초과 시 자동 폴백 라우터로 활용 가능 — Ryan 스택(Next.js·TypeScript) 친화적 MIT 라이선스, 검토 후보.\n"
+          },
+          "assert": [
+            {
+              "type": "javascript",
+              "value": "file://asserts.js"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "signal": "**① OmniRoute — Claude Code·Cursor 호환 무료 AI 게이트웨이, MCP/A2A 내장**\ndiegosouzapw/OmniRoute(MIT, TypeScript)가 오늘 GitHub Trending +1,107로 급등했다. 268개 이상 제공자(무료 50개 이상)·500개 이상 모델을 단일 엔드포인트로 통합하며, 쿼터 인식 자동 폴백·RTK+Caveman 압축(15~95% 토큰 절감, 저자 주장)·95개 MCP 도구·A2A 프로토콜을 내장한다. 500명 이상 기여자, 21,000개 이상 테스트 커버리지.\n영향: Claude Code 비용 초과 시 자동 폴백 라우터로 활용 가능 — Ryan 스택(Next.js·TypeScript) 친화적 MIT 라이선스, 검토 후보.\n"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "error": "'저자 주장' 한정어 소실(프레이밍 왜곡)",
+        "gradingResult": {
+          "pass": false,
+          "score": 0.75,
+          "reason": "'저자 주장' 한정어 소실(프레이밍 왜곡)",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0.75,
+              "reason": "'저자 주장' 한정어 소실(프레이밍 왜곡)",
+              "assertion": {
+                "type": "javascript",
+                "value": "file://asserts.js"
+              }
+            }
+          ]
+        },
+        "id": "b54841a9-3dc9-47ae-b25d-a8e91c6fff3c",
+        "latencyMs": 39859,
+        "namedScores": {},
+        "prompt": {
+          "raw": "아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n**① OmniRoute — Claude Code·Cursor 호환 무료 AI 게이트웨이, MCP/A2A 내장**\ndiegosouzapw/OmniRoute(MIT, TypeScript)가 오늘 GitHub Trending +1,107로 급등했다. 268개 이상 제공자(무료 50개 이상)·500개 이상 모델을 단일 엔드포인트로 통합하며, 쿼터 인식 자동 폴백·RTK+Caveman 압축(15~95% 토큰 절감, 저자 주장)·95개 MCP 도구·A2A 프로토콜을 내장한다. 500명 이상 기여자, 21,000개 이상 테스트 커버리지.\n영향: Claude Code 비용 초과 시 자동 폴백 라우터로 활용 가능 — Ryan 스택(Next.js·TypeScript) 친화적 MIT 라이선스, 검토 후보.",
+          "label": "prompt.txt: 아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n{{signal}}",
+          "config": {}
+        },
+        "promptId": "413a263b66171fcdf0b24b95a1c59142e1dbb09aaadf2657d2b1f3e3a6fb136d",
+        "promptIdx": 0,
+        "provider": {
+          "id": "exec: bash claude_provider.sh",
+          "label": ""
+        },
+        "response": {
+          "output": "{\"title\":\"OmniRoute, AI 무료 통합 창구 등장\",\"subtitle\":\"GitHub 인기 급상승에 오른 오픈소스 AI 게이트웨이\",\"body\":\"오늘 OmniRoute라는 오픈소스 프로젝트가 GitHub 인기 급상승 순위에서 크게 올라섰습니다. 이 도구는 ==268개 이상의 AI 제공업체와 500개 이상의 모델==을 하나의 접속 지점으로 묶어 쓸 수 있게 해주고, 한 서비스에 문제가 생기면 자동으로 다른 서비스로 바꿔주는 기능도 들어 있습니다. 제작진은 자체 압축 기술로 ==사용량을 15~95% 줄일 수 있다==고 설명합니다.\",\"impact\":\"여러 AI 서비스를 오가며 쓰는 개발자라면, 서비스 장애 시 자동으로 대체 서비스로 넘어가는 선택지가 하나 늘어난 셈입니다.\",\"category\":\"오픈소스 · 트렌딩\",\"context\":[\"MIT 라이선스의 오픈소스이며 TypeScript로 만들어졌습니다.\",\"제공업체 268개 이상(그중 무료 50개 이상), 모델 500개 이상을 지원합니다.\",\"MCP 도구 95개와 A2A 프로토콜을 함께 지원합니다.\",\"기여자 500명 이상, 테스트 코드 21,000개 이상으로 관리되고 있습니다.\"],\"duckNote\":\"무료 AI 창구가 하나 더 생겼덬\"}"
+        },
+        "score": 0.75,
+        "success": false,
+        "testCase": {
+          "description": "07-21 ① OmniRoute (저자 주장 한정어 포함)",
+          "vars": {
+            "signal": "**① OmniRoute — Claude Code·Cursor 호환 무료 AI 게이트웨이, MCP/A2A 내장**\ndiegosouzapw/OmniRoute(MIT, TypeScript)가 오늘 GitHub Trending +1,107로 급등했다. 268개 이상 제공자(무료 50개 이상)·500개 이상 모델을 단일 엔드포인트로 통합하며, 쿼터 인식 자동 폴백·RTK+Caveman 압축(15~95% 토큰 절감, 저자 주장)·95개 MCP 도구·A2A 프로토콜을 내장한다. 500명 이상 기여자, 21,000개 이상 테스트 커버리지.\n영향: Claude Code 비용 초과 시 자동 폴백 라우터로 활용 가능 — Ryan 스택(Next.js·TypeScript) 친화적 MIT 라이선스, 검토 후보.\n"
+          },
+          "assert": [
+            {
+              "type": "javascript",
+              "value": "file://asserts.js"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "signal": "**① OmniRoute — Claude Code·Cursor 호환 무료 AI 게이트웨이, MCP/A2A 내장**\ndiegosouzapw/OmniRoute(MIT, TypeScript)가 오늘 GitHub Trending +1,107로 급등했다. 268개 이상 제공자(무료 50개 이상)·500개 이상 모델을 단일 엔드포인트로 통합하며, 쿼터 인식 자동 폴백·RTK+Caveman 압축(15~95% 토큰 절감, 저자 주장)·95개 MCP 도구·A2A 프로토콜을 내장한다. 500명 이상 기여자, 21,000개 이상 테스트 커버리지.\n영향: Claude Code 비용 초과 시 자동 폴백 라우터로 활용 가능 — Ryan 스택(Next.js·TypeScript) 친화적 MIT 라이선스, 검토 후보.\n"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "error": "코드펜스 출력(금지)",
+        "gradingResult": {
+          "pass": false,
+          "score": 0.75,
+          "reason": "코드펜스 출력(금지)",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0.75,
+              "reason": "코드펜스 출력(금지)",
+              "assertion": {
+                "type": "javascript",
+                "value": "file://asserts.js"
+              }
+            }
+          ]
+        },
+        "id": "84118b94-0c9a-418c-b3c5-f092a31a8c7d",
+        "latencyMs": 22836,
+        "namedScores": {},
+        "prompt": {
+          "raw": "아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n**② fastmcp — Python MCP 서버 프레임워크, 전체 MCP 서버 70% 점유 (저자 주장)**\nPrefectHQ/fastmcp(MIT)가 2026-02 v3.0 출시 이후 일 400만 다운로드를 기록 중이다(저자 주장). v3.1은 1,000개 도구 카탈로그를 2개로 압축해 토큰 최대 99% 절감하는 코드 모드를 도입했다. 2026-06-30 공식 Anthropic SDK가 동명 클래스를 MCPServer로 리네임해 혼동 해소 — 독립 프로젝트로 유지.\n영향: Claude Code 커스텀 MCP 서버 구축 표준 — 신규 MCP 서버 작업 시 fastmcp 우선 검토.",
+          "label": "prompt.txt: 아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n{{signal}}",
+          "config": {}
+        },
+        "promptId": "413a263b66171fcdf0b24b95a1c59142e1dbb09aaadf2657d2b1f3e3a6fb136d",
+        "promptIdx": 0,
+        "provider": {
+          "id": "exec: bash claude_provider.sh",
+          "label": ""
+        },
+        "response": {
+          "output": "```json\n{\"title\":\"MCP 서버 개발, 사실상 이 도구가 표준\",\"subtitle\":\"fastmcp, 하루 400만 다운로드 기록 중이에요\",\"body\":\"fastmcp는 AI가 외부 도구와 연결되도록 돕는 서버, 즉 'MCP 서버'를 파이썬으로 쉽게 만들 수 있게 해주는 무료 공개 도구입니다. 2026년 2월 새 버전 출시 이후 ==하루 400만 건==이 다운로드되고 있다고 개발자가 밝혔으며, 최신 버전은 도구 목록을 짧게 압축해 ==AI가 쓰는 토큰(비용)을 최대 99%까지 줄이는== 기능도 새로 추가했습니다.\",\"impact\":\"Claude Code로 나만의 MCP 서버를 만들 때 사실상 표준 도구로 자리잡고 있어, 새로 서버를 만들 계획이 있다면 먼저 살펴볼 만합니다.\",\"category\":\"에이전트 · MCP\",\"context\":[\"PrefectHQ/fastmcp, MIT 라이선스로 공개된 오픈소스\",\"2026-02 v3.0 출시 후 하루 400만 다운로드(개발자 주장)\",\"v3.1: 도구 1,000개 목록을 2개로 압축해 토큰 최대 99% 절감\",\"2026-06-30 Anthropic 공식 SDK가 동명 클래스명을 MCPServer로 변경\"],\"duckNote\":\"MCP 서버 만들 거면 fastmcp부터 보고 오라덬\"}\n```"
+        },
+        "score": 0.75,
+        "success": false,
+        "testCase": {
+          "description": "07-21 ② fastmcp (저자 주장 2회 포함)",
+          "vars": {
+            "signal": "**② fastmcp — Python MCP 서버 프레임워크, 전체 MCP 서버 70% 점유 (저자 주장)**\nPrefectHQ/fastmcp(MIT)가 2026-02 v3.0 출시 이후 일 400만 다운로드를 기록 중이다(저자 주장). v3.1은 1,000개 도구 카탈로그를 2개로 압축해 토큰 최대 99% 절감하는 코드 모드를 도입했다. 2026-06-30 공식 Anthropic SDK가 동명 클래스를 MCPServer로 리네임해 혼동 해소 — 독립 프로젝트로 유지.\n영향: Claude Code 커스텀 MCP 서버 구축 표준 — 신규 MCP 서버 작업 시 fastmcp 우선 검토.\n"
+          },
+          "assert": [
+            {
+              "type": "javascript",
+              "value": "file://asserts.js"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "signal": "**② fastmcp — Python MCP 서버 프레임워크, 전체 MCP 서버 70% 점유 (저자 주장)**\nPrefectHQ/fastmcp(MIT)가 2026-02 v3.0 출시 이후 일 400만 다운로드를 기록 중이다(저자 주장). v3.1은 1,000개 도구 카탈로그를 2개로 압축해 토큰 최대 99% 절감하는 코드 모드를 도입했다. 2026-06-30 공식 Anthropic SDK가 동명 클래스를 MCPServer로 리네임해 혼동 해소 — 독립 프로젝트로 유지.\n영향: Claude Code 커스텀 MCP 서버 구축 표준 — 신규 MCP 서버 작업 시 fastmcp 우선 검토.\n"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "ok",
+              "assertion": {
+                "type": "javascript",
+                "value": "file://asserts.js"
+              }
+            }
+          ]
+        },
+        "id": "6679d459-4991-4055-a3da-2e1fda62ede9",
+        "latencyMs": 29495,
+        "namedScores": {},
+        "prompt": {
+          "raw": "아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n**② fastmcp — Python MCP 서버 프레임워크, 전체 MCP 서버 70% 점유 (저자 주장)**\nPrefectHQ/fastmcp(MIT)가 2026-02 v3.0 출시 이후 일 400만 다운로드를 기록 중이다(저자 주장). v3.1은 1,000개 도구 카탈로그를 2개로 압축해 토큰 최대 99% 절감하는 코드 모드를 도입했다. 2026-06-30 공식 Anthropic SDK가 동명 클래스를 MCPServer로 리네임해 혼동 해소 — 독립 프로젝트로 유지.\n영향: Claude Code 커스텀 MCP 서버 구축 표준 — 신규 MCP 서버 작업 시 fastmcp 우선 검토.\n\n[출력 형식 절대 규칙 — 위반 시 산출물 폐기]\n- 출력의 첫 문자는 반드시 `{`, 마지막 문자는 반드시 `}`다.\n- 인사말·작업 설명·서두·맺음말을 한 글자도 출력하지 않는다.\n- 마크다운 코드펜스(```)를 출력하지 않는다. JSON 원문만 출력한다.",
+          "label": "prompt_v2.txt: 아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n{{signal}}\n\n[출력 형식 절대 규칙 — 위반 시 산출물 폐기]\n- 출력의 첫 문자는 반드시 `{`, 마지막 문자는 반드시 `}`다.\n- 인사말·작업 설명·서두·맺음말을 한 글자도 출력하지 않는다.\n- 마크다운 코드펜스(```)를 출력하지 않는다. JSON 원문만 출력한다.",
+          "config": {}
+        },
+        "promptId": "2f8963177e300bba135faad034d77c5cb01ce4dddbe738570f770529ed2ed19f",
+        "promptIdx": 1,
+        "provider": {
+          "id": "exec: bash claude_provider.sh",
+          "label": ""
+        },
+        "response": {
+          "output": "{\"title\":\"AI 도구 연결, 이 오픈소스가 표준\",\"subtitle\":\"하루 다운로드 400만 건, MCP 서버의 사실상 표준으로\",\"body\":\"fastmcp는 AI가 외부 프로그램과 연결되도록 도와주는 서버를 파이썬으로 쉽게 만들 수 있게 해주는 오픈소스 도구입니다. 개발자가 직접 밝힌 바에 따르면 ==전체 관련 서버의 70%==가 이 도구로 만들어졌고, 하루 다운로드 수가 400만 건에 이른다고 합니다. 최신 버전은 도구 목록 1,000개를 2개로 압축해 ==처리 비용을 최대 99%까지 줄이는== 기능도 새로 추가했습니다.\",\"impact\":\"새로운 AI 연동 서버를 만들 때 가장 먼저 검토해볼 선택지로 자리잡았습니다. Anthropic 공식 도구와 이름이 겹쳤던 문제도 이름 변경으로 해소되어 혼동 없이 계속 쓰일 것으로 보입니다.\",\"link\":\"https://github.com/PrefectHQ/fastmcp\",\"category\":\"에이전트 · MCP\",\"context\":[\"PrefectHQ/fastmcp, MIT 라이선스로 공개된 오픈소스\",\"2026년 2월 v3.0 출시 이후 하루 400만 다운로드 기록(개발자 주장)\",\"v3.1, 도구 1,000개를 2개로 압축하는 '코드 모드' 도입\",\"2026년 6월 30일 Anthropic 공식 SDK가 같은 이름 클래스를 MCPServer로 변경해 혼동 해소\"],\"duckNote\":\"이름표만 슬쩍 바꿔서 혼동을 피해간 센스, 인정할 수밖에 없덬\"}"
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "07-21 ② fastmcp (저자 주장 2회 포함)",
+          "vars": {
+            "signal": "**② fastmcp — Python MCP 서버 프레임워크, 전체 MCP 서버 70% 점유 (저자 주장)**\nPrefectHQ/fastmcp(MIT)가 2026-02 v3.0 출시 이후 일 400만 다운로드를 기록 중이다(저자 주장). v3.1은 1,000개 도구 카탈로그를 2개로 압축해 토큰 최대 99% 절감하는 코드 모드를 도입했다. 2026-06-30 공식 Anthropic SDK가 동명 클래스를 MCPServer로 리네임해 혼동 해소 — 독립 프로젝트로 유지.\n영향: Claude Code 커스텀 MCP 서버 구축 표준 — 신규 MCP 서버 작업 시 fastmcp 우선 검토.\n"
+          },
+          "assert": [
+            {
+              "type": "javascript",
+              "value": "file://asserts.js"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "signal": "**② fastmcp — Python MCP 서버 프레임워크, 전체 MCP 서버 70% 점유 (저자 주장)**\nPrefectHQ/fastmcp(MIT)가 2026-02 v3.0 출시 이후 일 400만 다운로드를 기록 중이다(저자 주장). v3.1은 1,000개 도구 카탈로그를 2개로 압축해 토큰 최대 99% 절감하는 코드 모드를 도입했다. 2026-06-30 공식 Anthropic SDK가 동명 클래스를 MCPServer로 리네임해 혼동 해소 — 독립 프로젝트로 유지.\n영향: Claude Code 커스텀 MCP 서버 구축 표준 — 신규 MCP 서버 작업 시 fastmcp 우선 검토.\n"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "error": "코드펜스 출력(금지)",
+        "gradingResult": {
+          "pass": false,
+          "score": 0.75,
+          "reason": "코드펜스 출력(금지)",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0.75,
+              "reason": "코드펜스 출력(금지)",
+              "assertion": {
+                "type": "javascript",
+                "value": "file://asserts.js"
+              }
+            }
+          ]
+        },
+        "id": "d48a4bc7-95e5-43e2-a6ef-df46e8879067",
+        "latencyMs": 21685,
+        "namedScores": {},
+        "prompt": {
+          "raw": "아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n**⑤ Anthropic AI for Science — 희귀 질환 연구 그랜트 모집, $50K 크레딧·마감 8/2**\nAnthropic이 희귀 유전 질환 대상 AI for Science 그랜트 2차 모집을 시작했다(2026-07-20 발표). 선정 팀에 최대 $50,000 Claude 크레딧(6개월) 지급. 1차 사례: Every Cure(매약 재목적 탐색), Centre for Population Genomics(변이 분류 시스템).\n영향: Claude Science 워크벤치 확산 신호 — 에이전트 오케스트레이션 과학 워크로드 수요 증가 전망.",
+          "label": "prompt.txt: 아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n{{signal}}",
+          "config": {}
+        },
+        "promptId": "413a263b66171fcdf0b24b95a1c59142e1dbb09aaadf2657d2b1f3e3a6fb136d",
+        "promptIdx": 0,
+        "provider": {
+          "id": "exec: bash claude_provider.sh",
+          "label": ""
+        },
+        "response": {
+          "output": "```json\n{\"title\":\"희귀 질환 연구팀에 AI 지원금\",\"subtitle\":\"Anthropic이 신약 연구팀에 크레딧을 지원합니다\",\"body\":\"Anthropic이 희귀 유전 질환을 연구하는 팀을 위한 AI for Science 그랜트 2차 모집을 시작했습니다. 선정된 팀에게는 ==최대 5만 달러 규모의 Claude 크레딧(6개월간)==이 지원됩니다. 앞서 진행된 1차 모집에서는 신약 재목적 연구를 하는 Every Cure, 유전자 변이 분류 시스템을 만든 Centre for Population Genomics 등이 지원을 받았습니다.\",\"impact\":\"이번 모집은 Anthropic의 AI 기반 과학 연구 지원이 계속 확대되고 있다는 신호로, 앞으로 AI가 여러 연구 작업을 조율해주는 과학 워크로드 수요가 늘어날 것으로 보입니다.\",\"category\":\"기타\",\"context\":[\"2026년 7월 20일 발표\",\"선정 시 최대 5만 달러(6개월) Claude 크레딧 지원\",\"지원 마감일: 8월 2일\",\"1차 사례: Every Cure, Centre for Population Genomics\"],\"duckNote\":\"희귀 질환 연구하는 팀이라면 마감일부터 캘린더에 찍어두라덬\"}\n```"
+        },
+        "score": 0.75,
+        "success": false,
+        "testCase": {
+          "description": "07-21 ⑤ Anthropic 그랜트 (날짜·금액 보존 확인)",
+          "vars": {
+            "signal": "**⑤ Anthropic AI for Science — 희귀 질환 연구 그랜트 모집, $50K 크레딧·마감 8/2**\nAnthropic이 희귀 유전 질환 대상 AI for Science 그랜트 2차 모집을 시작했다(2026-07-20 발표). 선정 팀에 최대 $50,000 Claude 크레딧(6개월) 지급. 1차 사례: Every Cure(매약 재목적 탐색), Centre for Population Genomics(변이 분류 시스템).\n영향: Claude Science 워크벤치 확산 신호 — 에이전트 오케스트레이션 과학 워크로드 수요 증가 전망.\n"
+          },
+          "assert": [
+            {
+              "type": "javascript",
+              "value": "file://asserts.js"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 2,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "signal": "**⑤ Anthropic AI for Science — 희귀 질환 연구 그랜트 모집, $50K 크레딧·마감 8/2**\nAnthropic이 희귀 유전 질환 대상 AI for Science 그랜트 2차 모집을 시작했다(2026-07-20 발표). 선정 팀에 최대 $50,000 Claude 크레딧(6개월) 지급. 1차 사례: Every Cure(매약 재목적 탐색), Centre for Population Genomics(변이 분류 시스템).\n영향: Claude Science 워크벤치 확산 신호 — 에이전트 오케스트레이션 과학 워크로드 수요 증가 전망.\n"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "ok",
+              "assertion": {
+                "type": "javascript",
+                "value": "file://asserts.js"
+              }
+            }
+          ]
+        },
+        "id": "0dbedeca-2edf-4b5a-8bf8-a75fe42647f6",
+        "latencyMs": 22356,
+        "namedScores": {},
+        "prompt": {
+          "raw": "아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n**⑤ Anthropic AI for Science — 희귀 질환 연구 그랜트 모집, $50K 크레딧·마감 8/2**\nAnthropic이 희귀 유전 질환 대상 AI for Science 그랜트 2차 모집을 시작했다(2026-07-20 발표). 선정 팀에 최대 $50,000 Claude 크레딧(6개월) 지급. 1차 사례: Every Cure(매약 재목적 탐색), Centre for Population Genomics(변이 분류 시스템).\n영향: Claude Science 워크벤치 확산 신호 — 에이전트 오케스트레이션 과학 워크로드 수요 증가 전망.\n\n[출력 형식 절대 규칙 — 위반 시 산출물 폐기]\n- 출력의 첫 문자는 반드시 `{`, 마지막 문자는 반드시 `}`다.\n- 인사말·작업 설명·서두·맺음말을 한 글자도 출력하지 않는다.\n- 마크다운 코드펜스(```)를 출력하지 않는다. JSON 원문만 출력한다.",
+          "label": "prompt_v2.txt: 아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n{{signal}}\n\n[출력 형식 절대 규칙 — 위반 시 산출물 폐기]\n- 출력의 첫 문자는 반드시 `{`, 마지막 문자는 반드시 `}`다.\n- 인사말·작업 설명·서두·맺음말을 한 글자도 출력하지 않는다.\n- 마크다운 코드펜스(```)를 출력하지 않는다. JSON 원문만 출력한다.",
+          "config": {}
+        },
+        "promptId": "2f8963177e300bba135faad034d77c5cb01ce4dddbe738570f770529ed2ed19f",
+        "promptIdx": 1,
+        "provider": {
+          "id": "exec: bash claude_provider.sh",
+          "label": ""
+        },
+        "response": {
+          "output": "{\"title\":\"Anthropic, 희귀질환 연구 AI 지원금 모집\",\"subtitle\":\"무료 크레딧으로 희귀 유전 질환 연구를 돕습니다\",\"body\":\"Anthropic이 희귀 유전 질환을 연구하는 팀을 대상으로 AI 지원 프로그램의 2차 모집을 시작했습니다(2026년 7월 20일 발표). 선정된 팀에는 ==최대 5만 달러 상당의 Claude 이용 크레딧==이 6개월간 지급됩니다. 1차 지원 사례로는 약물 재창출을 연구한 Every Cure와 유전자 변이 분류 시스템을 만든 Centre for Population Genomics가 있습니다.\",\"impact\":\"이번 발표는 과학 연구 현장에서 AI 활용이 점차 늘어나고 있다는 신호로 해석됩니다. 여러 연구팀이 함께 AI를 활용해 작업하는 방식에 대한 수요가 앞으로 더 늘어날 것으로 보입니다.\",\"link\":\"\",\"category\":\"기타\",\"context\":[\"2026년 7월 20일 발표\",\"희귀 유전 질환 연구팀 대상 모집\",\"선정 시 최대 5만 달러 크레딧을 6개월간 지급\",\"마감일은 8월 2일\"],\"duckNote\":\"약 없는 병에도 AI가 손 내미는 덬\"}"
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "07-21 ⑤ Anthropic 그랜트 (날짜·금액 보존 확인)",
+          "vars": {
+            "signal": "**⑤ Anthropic AI for Science — 희귀 질환 연구 그랜트 모집, $50K 크레딧·마감 8/2**\nAnthropic이 희귀 유전 질환 대상 AI for Science 그랜트 2차 모집을 시작했다(2026-07-20 발표). 선정 팀에 최대 $50,000 Claude 크레딧(6개월) 지급. 1차 사례: Every Cure(매약 재목적 탐색), Centre for Population Genomics(변이 분류 시스템).\n영향: Claude Science 워크벤치 확산 신호 — 에이전트 오케스트레이션 과학 워크로드 수요 증가 전망.\n"
+          },
+          "assert": [
+            {
+              "type": "javascript",
+              "value": "file://asserts.js"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 2,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "signal": "**⑤ Anthropic AI for Science — 희귀 질환 연구 그랜트 모집, $50K 크레딧·마감 8/2**\nAnthropic이 희귀 유전 질환 대상 AI for Science 그랜트 2차 모집을 시작했다(2026-07-20 발표). 선정 팀에 최대 $50,000 Claude 크레딧(6개월) 지급. 1차 사례: Every Cure(매약 재목적 탐색), Centre for Population Genomics(변이 분류 시스템).\n영향: Claude Science 워크벤치 확산 신호 — 에이전트 오케스트레이션 과학 워크로드 수요 증가 전망.\n"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "error": "코드펜스 출력(금지)",
+        "gradingResult": {
+          "pass": false,
+          "score": 0.75,
+          "reason": "코드펜스 출력(금지)",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0.75,
+              "reason": "코드펜스 출력(금지)",
+              "assertion": {
+                "type": "javascript",
+                "value": "file://asserts.js"
+              }
+            }
+          ]
+        },
+        "id": "093c593f-b2ee-4800-955e-16733e603009",
+        "latencyMs": 19906,
+        "namedScores": {},
+        "prompt": {
+          "raw": "아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n**① Fable 5 — Max/Team Premium 오늘(7/20)부터 한도 50% 개방**\nAnthropic이 맥스/팀 프리미엄 구독자에게 Claude Fable 5를 요금제 사용 한도의 최대 50%까지 이용 허용했다(7/20 적용). 기존에는 더 낮은 티어 모델로 제한됐던 대규모 코드 리뷰·멀티에이전트 오케스트레이션 작업에도 Fable 5를 투입할 수 있게 됐다.\n영향: Ryan의 Claude Code 일일 작업 한도 구조 즉시 점검 권고 — 비용이 큰 작업을 Fable 5로 재배치할 수 있는지 확인.",
+          "label": "prompt.txt: 아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n{{signal}}",
+          "config": {}
+        },
+        "promptId": "413a263b66171fcdf0b24b95a1c59142e1dbb09aaadf2657d2b1f3e3a6fb136d",
+        "promptIdx": 0,
+        "provider": {
+          "id": "exec: bash claude_provider.sh",
+          "label": ""
+        },
+        "response": {
+          "output": "```json\n{\"title\":\"Fable 5, 유료 요금제 한도 절반 개방\",\"subtitle\":\"맥스·팀 프리미엄 구독자는 오늘부터 상위 모델을 더 많이 씁니다\",\"body\":\"Anthropic이 7월 20일부터 맥스와 팀 프리미엄 요금제 구독자에게 최신 AI 모델인 Fable 5를 ==전체 사용 한도의 최대 50%까지== 쓸 수 있도록 허용했습니다. 그동안은 더 낮은 등급의 모델로 제한되던 대규모 코드 검토나 여러 AI를 동시에 활용하는 작업에도 이제 Fable 5를 사용할 수 있게 되었습니다.\",\"impact\":\"이번 조치로 구독자들은 하루 작업량 안에서 더 강력한 모델을 자유롭게 활용할 수 있게 되어, 비용이 많이 드는 작업의 배분 전략을 다시 점검해볼 만합니다.\",\"category\":\"개발 도구 · 업데이트\",\"context\":[\"Anthropic 발표\",\"7월 20일부터 적용\",\"맥스·팀 프리미엄 요금제 대상\",\"한도 최대 50%까지 허용\"],\"duckNote\":\"한도 활짝 열렸으니 이제 큰 작업도 겁내지 말고 굴려보라는 뜻이덬\"}\n```"
+        },
+        "score": 0.75,
+        "success": false,
+        "testCase": {
+          "description": "07-20 ① Fable 5 한도 개방 (구독 정책 — 과장 유혹 높음)",
+          "vars": {
+            "signal": "**① Fable 5 — Max/Team Premium 오늘(7/20)부터 한도 50% 개방**\nAnthropic이 맥스/팀 프리미엄 구독자에게 Claude Fable 5를 요금제 사용 한도의 최대 50%까지 이용 허용했다(7/20 적용). 기존에는 더 낮은 티어 모델로 제한됐던 대규모 코드 리뷰·멀티에이전트 오케스트레이션 작업에도 Fable 5를 투입할 수 있게 됐다.\n영향: Ryan의 Claude Code 일일 작업 한도 구조 즉시 점검 권고 — 비용이 큰 작업을 Fable 5로 재배치할 수 있는지 확인.\n"
+          },
+          "assert": [
+            {
+              "type": "javascript",
+              "value": "file://asserts.js"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 3,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "signal": "**① Fable 5 — Max/Team Premium 오늘(7/20)부터 한도 50% 개방**\nAnthropic이 맥스/팀 프리미엄 구독자에게 Claude Fable 5를 요금제 사용 한도의 최대 50%까지 이용 허용했다(7/20 적용). 기존에는 더 낮은 티어 모델로 제한됐던 대규모 코드 리뷰·멀티에이전트 오케스트레이션 작업에도 Fable 5를 투입할 수 있게 됐다.\n영향: Ryan의 Claude Code 일일 작업 한도 구조 즉시 점검 권고 — 비용이 큰 작업을 Fable 5로 재배치할 수 있는지 확인.\n"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "ok",
+              "assertion": {
+                "type": "javascript",
+                "value": "file://asserts.js"
+              }
+            }
+          ]
+        },
+        "id": "2f580d52-0aeb-45dc-a50f-79a15651831f",
+        "latencyMs": 22007,
+        "namedScores": {},
+        "prompt": {
+          "raw": "아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n**① Fable 5 — Max/Team Premium 오늘(7/20)부터 한도 50% 개방**\nAnthropic이 맥스/팀 프리미엄 구독자에게 Claude Fable 5를 요금제 사용 한도의 최대 50%까지 이용 허용했다(7/20 적용). 기존에는 더 낮은 티어 모델로 제한됐던 대규모 코드 리뷰·멀티에이전트 오케스트레이션 작업에도 Fable 5를 투입할 수 있게 됐다.\n영향: Ryan의 Claude Code 일일 작업 한도 구조 즉시 점검 권고 — 비용이 큰 작업을 Fable 5로 재배치할 수 있는지 확인.\n\n[출력 형식 절대 규칙 — 위반 시 산출물 폐기]\n- 출력의 첫 문자는 반드시 `{`, 마지막 문자는 반드시 `}`다.\n- 인사말·작업 설명·서두·맺음말을 한 글자도 출력하지 않는다.\n- 마크다운 코드펜스(```)를 출력하지 않는다. JSON 원문만 출력한다.",
+          "label": "prompt_v2.txt: 아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n{{signal}}\n\n[출력 형식 절대 규칙 — 위반 시 산출물 폐기]\n- 출력의 첫 문자는 반드시 `{`, 마지막 문자는 반드시 `}`다.\n- 인사말·작업 설명·서두·맺음말을 한 글자도 출력하지 않는다.\n- 마크다운 코드펜스(```)를 출력하지 않는다. JSON 원문만 출력한다.",
+          "config": {}
+        },
+        "promptId": "2f8963177e300bba135faad034d77c5cb01ce4dddbe738570f770529ed2ed19f",
+        "promptIdx": 1,
+        "provider": {
+          "id": "exec: bash claude_provider.sh",
+          "label": ""
+        },
+        "response": {
+          "output": "{\"title\":\"Claude Fable 5, 이제 더 자주 써요\",\"subtitle\":\"맥스·팀 프리미엄 사용 한도 50%까지 확대되었습니다\",\"body\":\"Anthropic이 맥스(Max)와 팀 프리미엄 구독자를 대상으로 ==Claude Fable 5 모델을 요금제 사용 한도의 최대 50%까지== 쓸 수 있도록 허용했습니다. 이번 조치는 7월 20일부터 적용되며, 그동안 낮은 등급의 모델로 제한되던 ==대규모 코드 리뷰나 여러 AI 에이전트를 동시에 운용하는 작업==에도 이 모델을 투입할 수 있게 되었습니다.\",\"impact\":\"무거운 작업에 더 강력한 모델을 쓸 수 있게 되면서, 개발자들의 작업 방식과 비용 배분 전략에도 변화가 생길 것으로 보입니다.\",\"category\":\"개발 도구 · 업데이트\",\"context\":[\"맥스·팀 프리미엄 구독자 대상\",\"7월 20일부터 적용\",\"사용 한도의 최대 50%까지 허용\",\"기존엔 하위 모델로 제한됐던 작업에도 사용 가능\"],\"duckNote\":\"한도 늘었다고 무한은 아니니 잘 배분해야 하덬\"}"
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "07-20 ① Fable 5 한도 개방 (구독 정책 — 과장 유혹 높음)",
+          "vars": {
+            "signal": "**① Fable 5 — Max/Team Premium 오늘(7/20)부터 한도 50% 개방**\nAnthropic이 맥스/팀 프리미엄 구독자에게 Claude Fable 5를 요금제 사용 한도의 최대 50%까지 이용 허용했다(7/20 적용). 기존에는 더 낮은 티어 모델로 제한됐던 대규모 코드 리뷰·멀티에이전트 오케스트레이션 작업에도 Fable 5를 투입할 수 있게 됐다.\n영향: Ryan의 Claude Code 일일 작업 한도 구조 즉시 점검 권고 — 비용이 큰 작업을 Fable 5로 재배치할 수 있는지 확인.\n"
+          },
+          "assert": [
+            {
+              "type": "javascript",
+              "value": "file://asserts.js"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 3,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "signal": "**① Fable 5 — Max/Team Premium 오늘(7/20)부터 한도 50% 개방**\nAnthropic이 맥스/팀 프리미엄 구독자에게 Claude Fable 5를 요금제 사용 한도의 최대 50%까지 이용 허용했다(7/20 적용). 기존에는 더 낮은 티어 모델로 제한됐던 대규모 코드 리뷰·멀티에이전트 오케스트레이션 작업에도 Fable 5를 투입할 수 있게 됐다.\n영향: Ryan의 Claude Code 일일 작업 한도 구조 즉시 점검 권고 — 비용이 큰 작업을 Fable 5로 재배치할 수 있는지 확인.\n"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "error": "코드펜스 출력(금지)",
+        "gradingResult": {
+          "pass": false,
+          "score": 0.75,
+          "reason": "코드펜스 출력(금지)",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0.75,
+              "reason": "코드펜스 출력(금지)",
+              "assertion": {
+                "type": "javascript",
+                "value": "file://asserts.js"
+              }
+            }
+          ]
+        },
+        "id": "567f38d0-8dfe-46f9-a2ef-e490047a0c5f",
+        "latencyMs": 22585,
+        "namedScores": {},
+        "prompt": {
+          "raw": "아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n**② Claude Code 대규모 업데이트 — /fork 배경세션·에이전트 상한·토큰 절감**\n/fork가 대화를 독립 배경 세션으로 분기하도록 재설계됐다(기존 인라인 서브에이전트 spawn → /subtask로 분리). MCP 2분 초과 툴 콜은 자동 배경 이동되고, WebSearch 200회·서브에이전트 200개 세션 상한이 추가돼 런어웨이 루프를 차단한다. /resume은 삭제된 세션 포함 전체 피커로 진화했고, 에이전트 간 메시지 중복 제거로 inter-agent 토큰 비용도 줄었다.\n영향: multi-agent 워크플로 비용 절감 및 루프 안전장치 확보. Ryan 환경 즉시 업그레이드 권고.",
+          "label": "prompt.txt: 아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n{{signal}}",
+          "config": {}
+        },
+        "promptId": "413a263b66171fcdf0b24b95a1c59142e1dbb09aaadf2657d2b1f3e3a6fb136d",
+        "promptIdx": 0,
+        "provider": {
+          "id": "exec: bash claude_provider.sh",
+          "label": ""
+        },
+        "response": {
+          "output": "```json\n{\"title\":\"Claude Code, 더 안전하고 가벼워졌어요\",\"subtitle\":\"AI 여러 개를 동시에 돌려도 안심, 비용은 더 적게\",\"body\":\"개발 도구 Claude Code가 크게 업데이트됐습니다. 이제 대화를 따로 떼어내 ==독립된 배경 작업==으로 돌릴 수 있고, 시간이 오래 걸리는 작업은 자동으로 뒤로 넘어가 다른 일을 방해하지 않습니다. 또한 한 세션에서 검색이나 하위 작업이 끝없이 반복되지 않도록 ==횟수 상한선==이 새로 생겼고, 여러 AI가 주고받는 메시지의 중복도 줄여 비용까지 절감했습니다.\",\"impact\":\"복잡한 작업을 여러 AI에게 나눠 맡기는 방식이 더 안전하고 저렴해져서, 이런 방식을 쓰는 개발자라면 업그레이드해볼 만합니다.\",\"category\":\"개발 도구 · 업데이트\",\"context\":[\"대화를 독립된 배경 세션으로 분기 가능\",\"2분 넘게 걸리는 작업은 자동으로 배경 처리\",\"검색 200회 · 하위 작업 200개로 상한선 신설\",\"AI 간 중복 메시지 제거로 비용 절감\"],\"duckNote\":\"이제 AI 여러 마리 풀어놔도 안심되겠덬\"}\n```"
+        },
+        "score": 0.75,
+        "success": false,
+        "testCase": {
+          "description": "07-19 ② Claude Code 업데이트 (기술 용어 밀도 최고)",
+          "vars": {
+            "signal": "**② Claude Code 대규모 업데이트 — /fork 배경세션·에이전트 상한·토큰 절감**\n/fork가 대화를 독립 배경 세션으로 분기하도록 재설계됐다(기존 인라인 서브에이전트 spawn → /subtask로 분리). MCP 2분 초과 툴 콜은 자동 배경 이동되고, WebSearch 200회·서브에이전트 200개 세션 상한이 추가돼 런어웨이 루프를 차단한다. /resume은 삭제된 세션 포함 전체 피커로 진화했고, 에이전트 간 메시지 중복 제거로 inter-agent 토큰 비용도 줄었다.\n영향: multi-agent 워크플로 비용 절감 및 루프 안전장치 확보. Ryan 환경 즉시 업그레이드 권고.\n"
+          },
+          "assert": [
+            {
+              "type": "javascript",
+              "value": "file://asserts.js"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 4,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "signal": "**② Claude Code 대규모 업데이트 — /fork 배경세션·에이전트 상한·토큰 절감**\n/fork가 대화를 독립 배경 세션으로 분기하도록 재설계됐다(기존 인라인 서브에이전트 spawn → /subtask로 분리). MCP 2분 초과 툴 콜은 자동 배경 이동되고, WebSearch 200회·서브에이전트 200개 세션 상한이 추가돼 런어웨이 루프를 차단한다. /resume은 삭제된 세션 포함 전체 피커로 진화했고, 에이전트 간 메시지 중복 제거로 inter-agent 토큰 비용도 줄었다.\n영향: multi-agent 워크플로 비용 절감 및 루프 안전장치 확보. Ryan 환경 즉시 업그레이드 권고.\n"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "ok",
+              "assertion": {
+                "type": "javascript",
+                "value": "file://asserts.js"
+              }
+            }
+          ]
+        },
+        "id": "321626e0-b1b7-4e09-bb48-9e7d8556d215",
+        "latencyMs": 21057,
+        "namedScores": {},
+        "prompt": {
+          "raw": "아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n**② Claude Code 대규모 업데이트 — /fork 배경세션·에이전트 상한·토큰 절감**\n/fork가 대화를 독립 배경 세션으로 분기하도록 재설계됐다(기존 인라인 서브에이전트 spawn → /subtask로 분리). MCP 2분 초과 툴 콜은 자동 배경 이동되고, WebSearch 200회·서브에이전트 200개 세션 상한이 추가돼 런어웨이 루프를 차단한다. /resume은 삭제된 세션 포함 전체 피커로 진화했고, 에이전트 간 메시지 중복 제거로 inter-agent 토큰 비용도 줄었다.\n영향: multi-agent 워크플로 비용 절감 및 루프 안전장치 확보. Ryan 환경 즉시 업그레이드 권고.\n\n[출력 형식 절대 규칙 — 위반 시 산출물 폐기]\n- 출력의 첫 문자는 반드시 `{`, 마지막 문자는 반드시 `}`다.\n- 인사말·작업 설명·서두·맺음말을 한 글자도 출력하지 않는다.\n- 마크다운 코드펜스(```)를 출력하지 않는다. JSON 원문만 출력한다.",
+          "label": "prompt_v2.txt: 아래는 개발자용 기술 브리핑의 시그널 항목이다. 이를 인스타그램 카드뉴스용으로 대중 눈높이에 맞춰 재작성해 JSON 오브젝트 하나로 출력하라.\n\n재작성 규칙:\n- 존댓말(\"~습니다\")로 쓴다.\n- 전문용어는 풀어쓴다 (예: \"오픈 웨이트 모델\" → \"무료로 공개된 AI 모델\").\n- 수치·사실은 원문 그대로 유지하고, 과장·단정하지 않는다.\n- 고유명사(제품·회사명)는 한글 음차 없이 원문 표기한다 (한글 공식 명칭이 있는 경우만 예외).\n\n출력 스키마 (JSON 오브젝트 하나만, 다른 텍스트·코드펜스 금지):\n{\"title\":\"쉬운 제목(25자 내외)\",\"subtitle\":\"한 줄 부제\",\"body\":\"쉬운 설명 2~3문장(존댓말)\",\"impact\":\"이 소식이 가져올 영향 1~2문장(존댓말)\",\"link\":\"원문/repo URL (있을 때만)\",\"category\":\"분류 라벨\",\"context\":[\"한눈에 보기 팩트 3~4개\"],\"duckNote\":\"오리 기자 한마디('덬' 어미)\"}\n\n추가 규칙:\n- category는 다음 중 하나만 허용: 보안 · 취약점 / 개발 도구 · 업데이트 / 데이터베이스 · 신기능 / AI 모델 · 신규 공개 / 에이전트 · MCP / 콘텐츠 · 크리에이터 / 오픈소스 · 트렌딩 / 기타. 정확히 안 맞으면 \"기타\".\n- duckNote는 반드시 '덬'으로 끝낸다 ('덕'·'다'·'요' 금지).\n- body에서 강조할 핵심 구절 1~3곳을 ==구절==로 감싼다. ==는 짝을 맞추고, 본문 첫 글자부터 마킹을 시작하지 않는다.\n\n[시그널]\n{{signal}}\n\n[출력 형식 절대 규칙 — 위반 시 산출물 폐기]\n- 출력의 첫 문자는 반드시 `{`, 마지막 문자는 반드시 `}`다.\n- 인사말·작업 설명·서두·맺음말을 한 글자도 출력하지 않는다.\n- 마크다운 코드펜스(```)를 출력하지 않는다. JSON 원문만 출력한다.",
+          "config": {}
+        },
+        "promptId": "2f8963177e300bba135faad034d77c5cb01ce4dddbe738570f770529ed2ed19f",
+        "promptIdx": 1,
+        "provider": {
+          "id": "exec: bash claude_provider.sh",
+          "label": ""
+        },
+        "response": {
+          "output": "{\"title\":\"Claude Code 대규모 업데이트 소식\",\"subtitle\":\"/fork가 독립 배경 세션으로 진화했어요\",\"body\":\"Claude Code의 /fork 기능이 대화를 ==독립된 배경 세션==으로 분기하도록 새롭게 설계됐습니다. 2분 넘게 걸리는 도구 호출은 자동으로 백그라운드로 옮겨지고, ==웹 검색 200회·에이전트 200개==라는 상한이 생겨 끝없이 반복되는 작업을 막아줍니다. 에이전트끼리 주고받는 메시지의 중복도 줄어들어 비용까지 아낄 수 있게 됐습니다.\",\"impact\":\"여러 AI 에이전트를 동시에 쓰는 개발 방식의 비용이 줄고, 폭주하는 반복 작업을 막는 안전장치도 갖췄습니다.\",\"category\":\"개발 도구 · 업데이트\",\"context\":[\"/fork가 대화를 독립된 배경 세션으로 분기함\",\"2분 넘는 도구 호출은 자동으로 백그라운드 이동\",\"웹 검색 200회, 에이전트 200개로 상한 추가\",\"에이전트 간 메시지 중복 제거로 비용 절감\"],\"duckNote\":\"무한 루프 걱정 없이 뒤에서 척척 돌아가는 느낌이 좋덬\"}"
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "07-19 ② Claude Code 업데이트 (기술 용어 밀도 최고)",
+          "vars": {
+            "signal": "**② Claude Code 대규모 업데이트 — /fork 배경세션·에이전트 상한·토큰 절감**\n/fork가 대화를 독립 배경 세션으로 분기하도록 재설계됐다(기존 인라인 서브에이전트 spawn → /subtask로 분리). MCP 2분 초과 툴 콜은 자동 배경 이동되고, WebSearch 200회·서브에이전트 200개 세션 상한이 추가돼 런어웨이 루프를 차단한다. /resume은 삭제된 세션 포함 전체 피커로 진화했고, 에이전트 간 메시지 중복 제거로 inter-agent 토큰 비용도 줄었다.\n영향: multi-agent 워크플로 비용 절감 및 루프 안전장치 확보. Ryan 환경 즉시 업그레이드 권고.\n"
+          },
+          "assert": [
+            {
+              "type": "javascript",
+              "value": "file://asserts.js"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 4,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "signal": "**② Claude Code 대규모 업데이트 — /fork 배경세션·에이전트 상한·토큰 절감**\n/fork가 대화를 독립 배경 세션으로 분기하도록 재설계됐다(기존 인라인 서브에이전트 spawn → /subtask로 분리). MCP 2분 초과 툴 콜은 자동 배경 이동되고, WebSearch 200회·서브에이전트 200개 세션 상한이 추가돼 런어웨이 루프를 차단한다. /resume은 삭제된 세션 포함 전체 피커로 진화했고, 에이전트 간 메시지 중복 제거로 inter-agent 토큰 비용도 줄었다.\n영향: multi-agent 워크플로 비용 절감 및 루프 안전장치 확보. Ryan 환경 즉시 업그레이드 권고.\n"
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      }
+    ],
+    "stats": {
+      "successes": 4,
+      "failures": 6,
+      "errors": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 10,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 132362,
+      "evaluationDurationMs": 132362
+    }
+  },
+  "config": {
+    "description": "cardnews-rewrite-pilot",
+    "prompts": [
+      "file://prompt.txt",
+      "file://prompt_v2.txt"
+    ],
+    "providers": [
+      {
+        "id": "exec: bash claude_provider.sh",
+        "config": {
+          "timeout": 180000
+        }
+      }
+    ],
+    "tests": "file://tests.yaml",
+    "defaultTest": {
+      "assert": [
+        {
+          "type": "javascript",
+          "value": "file://asserts.js"
+        }
+      ]
+    },
+    "outputPath": [
+      "ab.json"
+    ],
+    "extensions": [],
+    "evaluateOptions": {
+      "maxConcurrency": 2
+    }
+  },
+  "shareableUrl": null,
+  "metadata": {
+    "promptfooVersion": "0.121.19",
+    "nodeVersion": "v25.9.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "exportedAt": "2026-07-21T13:48:57.183Z",
+    "evaluationCreatedAt": "2026-07-21T13:46:44.615Z"
+  },
+  "vars": [
+    "signal"
+  ],
+  "runtimeOptions": {
+    "maxConcurrency": 2,
+    "showProgressBar": false,
+    "eventSource": "cli",
+    "repeat": 1,
+    "cache": false
+  }
+}

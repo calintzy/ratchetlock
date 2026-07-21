@@ -307,7 +307,8 @@ Anti-ISC-4 (의미 왜곡 검출 MVP 제외): `grep -rEi "llm.?rubric|semantic.?
 
 ## Open Questions
 - (해소됨) promptfoo `eval -o` JSON 스키마·종료코드·config 참조·javascript assert·래칫 부재·환경변수 — 공식 문서/소스(`src/types/index.ts`, promptfoo.dev) 검증 완료, 3.4·T2에 반영. 남은 미세 확인: `testCase.description`·`prompt.label`이 출력 JSON에 항상 실리는지 T2 구현 시 실측 픽스처(baseline.json/ab.json)로 최종 확인(폴백=vars 해시 이미 설계됨).
-- (구현 시 결정) replay 프로바이더의 케이스↔출력 매칭 키 — vars 직렬화 해시 우선, description 보조. ab.json fixture로 T2에서 매칭 정확도 검증.
+- (T2 실측 완료) `testCase.description`·`prompt.label`은 baseline.json(5행)·ab.json(10행) 전 15행에 예외 없이 실렸다(폴백 vars 해시 경로는 실제로 타지 않음, 방어 코드로만 유지). 단, `prompt.label`은 짧은 파일명이 아니라 `"<파일명>: <템플릿 원문(vars 치환 전)>"` 형태였다(실측·소스 확인: file:// 프롬프트 로드 시 promptfoo가 이렇게 채운다) — `ratchet.json`의 `activePrompt`/`target.prompts`(파일명만)와 맞추려면 어댑터가 콜론 앞 파일명 토큰만 잘라 promptId로 써야 한다(`src/promptfoo.ts`의 `extractPromptId`). §3.4 서술의 "promptId = prompt.label"은 이 추출을 거친 값으로 정정.
+- (해소됨, T2) replay 프로바이더의 케이스↔출력 매칭 키 — 계획 초안(vars 해시 우선·description 보조)에서 **description 우선·vars 해시 폴백으로 순서를 뒤집어 확정**했다. 근거: (1) §3.3 `ratchet.json` 스키마의 `frozen[].cases`가 이미 description을 딕셔너리 키로 직접 쓴다(예시: `"07-21 ② fastmcp": {...}`), (2) `src/promptfoo.ts`의 `CaseResult.caseId` 추출도 description 우선·vars 해시 폴백이라 두 쪽 순서가 어긋나면 replay 매칭이 깨진다, (3) `.ratchet/probe` 실측 실험으로 exec 프로바이더가 `argv[4]`(context JSON)에 `test.description`을 그대로 받는 걸 확인해 별도 변환 없이 바로 키로 쓸 수 있다. `test/promptfoo.test.js`·`test/keying.test.js`·replay-provider 스모크로 검증.
 - (구현 시 결정) `add-fail`이 신규 시그널을 tests 파일에 append할 때 YAML append 방식 — 파일럿 tests.yaml은 리스트 포맷이라 stdlib로 안전 append 가능. `file://tests.js` 생성기 형태였다면 append 불가 → ratchet.json에만 등록하고 수동 추가 안내(구현 시 분기).
 
 ---
