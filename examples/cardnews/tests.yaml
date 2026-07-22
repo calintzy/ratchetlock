@@ -1,0 +1,35 @@
+# 과거 브리핑 시그널 5건 — 원문은 RyanVault/06-BRIEFINGS/briefings/
+- description: "07-21 ① OmniRoute (저자 주장 한정어 포함)"
+  vars:
+    signal: |
+      **① OmniRoute — Claude Code·Cursor 호환 무료 AI 게이트웨이, MCP/A2A 내장**
+      diegosouzapw/OmniRoute(MIT, TypeScript)가 오늘 GitHub Trending +1,107로 급등했다. 268개 이상 제공자(무료 50개 이상)·500개 이상 모델을 단일 엔드포인트로 통합하며, 쿼터 인식 자동 폴백·RTK+Caveman 압축(15~95% 토큰 절감, 저자 주장)·95개 MCP 도구·A2A 프로토콜을 내장한다. 500명 이상 기여자, 21,000개 이상 테스트 커버리지.
+      영향: Claude Code 비용 초과 시 자동 폴백 라우터로 활용 가능 — Ryan 스택(Next.js·TypeScript) 친화적 MIT 라이선스, 검토 후보.
+
+- description: "07-21 ② fastmcp (저자 주장 2회 포함)"
+  vars:
+    signal: |
+      **② fastmcp — Python MCP 서버 프레임워크, 전체 MCP 서버 70% 점유 (저자 주장)**
+      PrefectHQ/fastmcp(MIT)가 2026-02 v3.0 출시 이후 일 400만 다운로드를 기록 중이다(저자 주장). v3.1은 1,000개 도구 카탈로그를 2개로 압축해 토큰 최대 99% 절감하는 코드 모드를 도입했다. 2026-06-30 공식 Anthropic SDK가 동명 클래스를 MCPServer로 리네임해 혼동 해소 — 독립 프로젝트로 유지.
+      영향: Claude Code 커스텀 MCP 서버 구축 표준 — 신규 MCP 서버 작업 시 fastmcp 우선 검토.
+
+- description: "07-21 ⑤ Anthropic 그랜트 (날짜·금액 보존 확인)"
+  vars:
+    signal: |
+      **⑤ Anthropic AI for Science — 희귀 질환 연구 그랜트 모집, $50K 크레딧·마감 8/2**
+      Anthropic이 희귀 유전 질환 대상 AI for Science 그랜트 2차 모집을 시작했다(2026-07-20 발표). 선정 팀에 최대 $50,000 Claude 크레딧(6개월) 지급. 1차 사례: Every Cure(매약 재목적 탐색), Centre for Population Genomics(변이 분류 시스템).
+      영향: Claude Science 워크벤치 확산 신호 — 에이전트 오케스트레이션 과학 워크로드 수요 증가 전망.
+
+- description: "07-20 ① Fable 5 한도 개방 (구독 정책 — 과장 유혹 높음)"
+  vars:
+    signal: |
+      **① Fable 5 — Max/Team Premium 오늘(7/20)부터 한도 50% 개방**
+      Anthropic이 맥스/팀 프리미엄 구독자에게 Claude Fable 5를 요금제 사용 한도의 최대 50%까지 이용 허용했다(7/20 적용). 기존에는 더 낮은 티어 모델로 제한됐던 대규모 코드 리뷰·멀티에이전트 오케스트레이션 작업에도 Fable 5를 투입할 수 있게 됐다.
+      영향: Ryan의 Claude Code 일일 작업 한도 구조 즉시 점검 권고 — 비용이 큰 작업을 Fable 5로 재배치할 수 있는지 확인.
+
+- description: "07-19 ② Claude Code 업데이트 (기술 용어 밀도 최고)"
+  vars:
+    signal: |
+      **② Claude Code 대규모 업데이트 — /fork 배경세션·에이전트 상한·토큰 절감**
+      /fork가 대화를 독립 배경 세션으로 분기하도록 재설계됐다(기존 인라인 서브에이전트 spawn → /subtask로 분리). MCP 2분 초과 툴 콜은 자동 배경 이동되고, WebSearch 200회·서브에이전트 200개 세션 상한이 추가돼 런어웨이 루프를 차단한다. /resume은 삭제된 세션 포함 전체 피커로 진화했고, 에이전트 간 메시지 중복 제거로 inter-agent 토큰 비용도 줄었다.
+      영향: multi-agent 워크플로 비용 절감 및 루프 안전장치 확보. Ryan 환경 즉시 업그레이드 권고.

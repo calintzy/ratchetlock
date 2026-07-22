@@ -243,6 +243,7 @@ ratchetlock/
 - `ARCHITECTURE.md`("왜" 중심): promptfoo 위에 래칫을 얹는 이유, **결정성 정책(왜 check가 LLM을 재호출하지 않고 동결 출력을 replay하는가 — LLM 비결정성이 게이트를 플레이키하게 만들기 때문, C2)**, 파일 상태(비-DB) 선택 이유, `(promptId,caseId)` 복합 키가 필요한 이유(C1), 프로브 동시 버전 관리 근거, YAGNI 결정들.
 - `README.md`(자연스러운 산문): 무엇인지·설치·5개 커맨드·카드뉴스 예제(히어로 데모, **baseline.json 실측대로**: 파싱실패 1건+코드펜스 4건, 헤드라인 0/5→4/5)·프레이밍 휴리스틱 vs LLM 의미 판정 구분·**OmniRoute 미동결을 "도구가 실이슈를 잡은 사례"로 서술**(MINOR, 더 강한 서사)·로드맵(의미 왜곡 LLM 루브릭 = MVP 제외).
 - 마무리: hangeul-deai 스킬로 문체 패스(AI 티·번역체 제거).
+- (H3, T3에서 이월) 사용자 프로브 계약 문서화: 결정적 check는 프로브를 파일 바이트(hashFile)로만 다루고 채점은 promptfoo에 위임하지만, replay-fidelity 교차검증·`add-fail`류 도구가 프로브를 직접 로드하려면 **사용자 asserts 프로브는 CJS로 require 가능해야 한다**(예제 asserts.js가 `module.exports = (output, context) => …` 형태인 이유)를 README/ARCHITECTURE에 한 줄 명시.
 - 의존: T5 (정직한 실측 예제 출력을 문서화).
 
 ---

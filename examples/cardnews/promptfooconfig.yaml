@@ -1,0 +1,19 @@
+# 카드뉴스 대중 재작성 프롬프트 — ratchetlock 플래그십 예제 (2026-07-21 파일럿 이식)
+# 프롬프트 v1(prompt.txt)·v2(prompt_v2.txt)를 하나의 config로 A/B 평가한다.
+description: cardnews-rewrite
+prompts:
+  - file://prompt.txt
+  - file://prompt_v2.txt
+providers:
+  # 라이브(--live) 평가용 — 구독 claude CLI 헤드리스 호출(API 키 불필요).
+  # 결정적 check는 이 프로바이더를 replay-provider.js로 자동 치환한다(C2).
+  - id: 'exec: bash provider.sh'
+    config:
+      timeout: 180000
+defaultTest:
+  assert:
+    - type: javascript
+      value: file://asserts.js
+tests: file://tests.yaml
+evaluateOptions:
+  maxConcurrency: 2

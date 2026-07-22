@@ -142,15 +142,17 @@ function normalizeRow(row: Record<string, any>): CaseResult {
 /**
  * promptId = prompt.label에서 파일명 접두부를 추출한다.
  * 실측(examples/cardnews/fixtures/ab.json): promptfoo가 file:// 프롬프트를 로드하면
- * label = "<파일명>: <템플릿 원문(vars 치환 전)>" 형태로 채워진다(예: "prompt_v2.txt: 아래는…").
+ * label = "<파일 참조>: <템플릿 원문(vars 치환 전)>" 형태로 채워진다(예: "prompt_v2.txt: 아래는…").
  * label 전체를 promptId로 쓰면 ratchet.json의 activePrompt/target.prompts(파일명 그대로, §3.3)와
- * 일치하지 않아 floor 대조(T3)가 깨지므로, 콜론 앞 파일명 토큰만 promptId로 취한다.
- * 접두부 형식이 아닌 label(파일 참조 없이 인라인 프롬프트 등)은 label 전체를 그대로 promptId로 폴백한다.
+ * 일치하지 않아 floor 대조(T3)가 깨지므로, 콜론 앞 파일 참조 토큰만 취한다.
+ * 그 토큰은 config의 file:// 경로 형태에 따라 상대("prompt_v2.txt")일 수도, 절대("/…/prompt_v2.txt")일
+ * 수도 있다(결정적 check의 replay config는 file://를 절대경로로 재작성하므로 후자가 된다) — 어느 쪽이든
+ * basename만 취해 ratchet.json의 파일명과 일치시킨다. 접두부 형식이 아닌 label은 전체를 그대로 폴백한다.
  */
 function extractPromptId(label: unknown): string {
   const text = typeof label === "string" ? label : "";
   const match = text.match(/^(\S+):\s/);
-  return match ? match[1] : text;
+  return match ? basename(match[1]) : text;
 }
 
 /**

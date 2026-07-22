@@ -1,0 +1,42 @@
+[
+  {
+    "caseId": "07-19 ② Claude Code 업데이트 (기술 용어 밀도 최고)",
+    "pass": false,
+    "score": 0.75,
+    "fails": [
+      "코드펜스 출력(금지)"
+    ]
+  },
+  {
+    "caseId": "07-20 ① Fable 5 한도 개방 (구독 정책 — 과장 유혹 높음)",
+    "pass": false,
+    "score": 0.75,
+    "fails": [
+      "코드펜스 출력(금지)"
+    ]
+  },
+  {
+    "caseId": "07-21 ① OmniRoute (저자 주장 한정어 포함)",
+    "pass": false,
+    "score": 0.75,
+    "fails": [
+      "코드펜스 출력(금지)"
+    ]
+  },
+  {
+    "caseId": "07-21 ② fastmcp (저자 주장 2회 포함)",
+    "pass": false,
+    "score": 0,
+    "fails": [
+      "JSON 파싱 실패"
+    ]
+  },
+  {
+    "caseId": "07-21 ⑤ Anthropic 그랜트 (날짜·금액 보존 확인)",
+    "pass": false,
+    "score": 0.75,
+    "fails": [
+      "코드펜스 출력(금지)"
+    ]
+  }
+]

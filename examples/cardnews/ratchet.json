@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "target": {
+    "config": "promptfooconfig.yaml",
+    "prompts": [
+      "prompt.txt",
+      "prompt_v2.txt"
+    ],
+    "probes": [
+      "asserts.js"
+    ],
+    "tests": "file://tests.yaml"
+  },
+  "activePrompt": "prompt.txt",
+  "current": {
+    "prompts": {
+      "prompt.txt": "sha256:82df4a58d4d6e31e7304fe77ab351578e6aaf5c7078724413badffa3f5b56089",
+      "prompt_v2.txt": "sha256:fb768cebdd52b6b50a7b116ed79f053e60e7bffea27efb13ba6996bbd15f2ab8"
+    },
+    "probes": {
+      "asserts.js": "sha256:f1346d8d9410eff7de0bc6da0094ac1bd80bcd88c526430bf8ac48873ac99d9b"
+    }
+  },
+  "frozen": [],
+  "failCases": []
+}
