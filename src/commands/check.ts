@@ -11,6 +11,7 @@ import {
 } from "../state.js";
 import { createReplayConfig, runEval, type CaseResult } from "../promptfoo.js";
 import { combinedProbeHash } from "./freeze.js";
+import { writeLastEval } from "../lastEval.js";
 import { deriveFloor, latestFrozenFor, type FloorResult } from "../floor.js";
 
 /**
@@ -75,16 +76,6 @@ function resolveReplayProviderPath(): string {
   return resolve(__dirname, "..", "replay-provider.js");
 }
 
-function writeLastEval(cwd: string, results: CaseResult[]): void {
-  const outPath = resolve(cwd, ".ratchet", "last-eval.json");
-  mkdirSync(dirname(outPath), { recursive: true });
-  writeFileSync(
-    outPath,
-    `${JSON.stringify({ evaluatedAt: new Date().toISOString(), results }, null, 2)}\n`,
-    "utf-8",
-  );
-}
-
 /** 결정적 replay eval을 실행한다 — 동결 출력을 replay-provider로 되돌리고 현재 프로브를 재적용한다. */
 async function runReplayEval(
   cwd: string,
@@ -133,15 +124,21 @@ function findRegressions(
 
 /**
  * verdict 동결 대조(처방 2, 2x2 분기): floor의 frozen 케이스에 대해 replay 재채점(score/pass)을
- * 동결 기록과 비교한다. probeHash 동일한데 갈리면 결정성 버그(loud fail), 다르면 드리프트 케이스.
+ * 동결 기록과 비교한다. 프로브 해시가 다르면 드리프트 케이스(프로브 변경이 측정을 바꾼 것),
+ * 프로브 해시가 같은데 갈리면 스냅샷 불일치다.
+ *
+ * 스냅샷 불일치(무결성 위반): replay-provider는 저장 output을 그대로 되돌리고 프로브도 동결 시점과
+ * 같으므로, 결정적 프로브라면 재채점 score는 저장 score와 반드시 일치해야 한다. 그런데 갈렸다는 건
+ * 저장된 (output, score) 쌍 자체가 어긋났다는 뜻 — 스냅샷이 변조·손상됐다(예: ratchet.json 직접 편집).
+ * 이는 "결정성 버그"가 아니라 동결 기록의 무결성 위반이므로 그 라벨로 분리한다(loud fail).
  */
 function classifyDivergences(
   floor: FloorResult,
   snapshot: FrozenSnapshot,
   byCase: Map<string, CaseResult>,
   probeMismatch: boolean,
-): { determinismBugs: Divergence[]; driftCases: Divergence[] } {
-  const determinismBugs: Divergence[] = [];
+): { snapshotMismatches: Divergence[]; driftCases: Divergence[] } {
+  const snapshotMismatches: Divergence[] = [];
   const driftCases: Divergence[] = [];
   for (const caseId of floor.fromFrozen) {
     const frozen = snapshot.cases[caseId];
@@ -150,9 +147,9 @@ function classifyDivergences(
     const diverged = replay.score !== frozen.score || replay.pass !== frozen.pass;
     if (!diverged) continue;
     if (probeMismatch) driftCases.push({ caseId, frozen, replay });
-    else determinismBugs.push({ caseId, frozen, replay });
+    else snapshotMismatches.push({ caseId, frozen, replay });
   }
-  return { determinismBugs, driftCases };
+  return { snapshotMismatches, driftCases };
 }
 
 export async function runCheck(args: string[]): Promise<void> {
@@ -225,11 +222,15 @@ export async function runCheck(args: string[]): Promise<void> {
   const byCase = new Map<string, CaseResult>();
   for (const r of results.filter((r) => r.promptId === targetPrompt)) byCase.set(r.caseId, r);
 
-  const regressed = findRegressions(floor, byCase);
-  const { determinismBugs, driftCases } =
+  const { snapshotMismatches, driftCases } =
     snapshot && !live
       ? classifyDivergences(floor, snapshot, byCase, probe.mismatch)
-      : { determinismBugs: [], driftCases: [] };
+      : { snapshotMismatches: [] as Divergence[], driftCases: [] as Divergence[] };
+
+  // 스냅샷 불일치로 이미 잡힌 케이스는 회귀 카운트에서 뺀다 — 변조된 저장 output이 재채점에서
+  // fail로 나오면 findRegressions와 classifyDivergences가 같은 사건을 이중 계상하기 때문이다.
+  const mismatchIds = new Set(snapshotMismatches.map((d) => d.caseId));
+  const regressed = findRegressions(floor, byCase).filter((r) => !mismatchIds.has(r.caseId));
 
   // ── verdict 출력(stdout, ISC-2.2/3.3: verdict만 stdout ≤12줄, 원시 출력은 로그로) ──
   const mode = live ? "live" : "replay";
@@ -243,9 +244,9 @@ export async function runCheck(args: string[]): Promise<void> {
       `[drift] ${d.caseId}: 동결 score ${d.frozen.score} → 재채점 ${d.replay.score} (프로브 변경 영향)`,
     );
   }
-  for (const b of determinismBugs) {
+  for (const b of snapshotMismatches) {
     console.log(
-      `[결정성 버그] ${b.caseId}: 프로브 동일한데 동결 ${b.frozen.score} ≠ 재채점 ${b.replay.score}`,
+      `[스냅샷 불일치] ${b.caseId}: 프로브 동일한데 동결 ${b.frozen.score} ≠ 재채점 ${b.replay.score} (동결 기록 무결성 위반)`,
     );
   }
   for (const r of regressed) {
@@ -253,19 +254,19 @@ export async function runCheck(args: string[]): Promise<void> {
   }
 
   // ── 판정 ──
-  // 결정성 버그: 프로브가 같은데 재채점이 갈림 → 무조건 loud fail(비결정성은 게이트의 근간을 흔든다).
+  // 스냅샷 불일치: 프로브가 같은데 저장 output 재채점이 저장 score와 갈림 → 무조건 loud fail(동결 무결성 위반).
   // 회귀: floor 케이스가 pass 못 함 → fail.
   // 드리프트(프로브 변경): 기본 경고, --probe-locked면 하드 페일(처방 2).
   const hardFail =
     regressed.length > 0 ||
-    determinismBugs.length > 0 ||
+    snapshotMismatches.length > 0 ||
     (probeLocked && probe.mismatch);
 
   if (hardFail) {
-    if (probeLocked && probe.mismatch && regressed.length === 0 && determinismBugs.length === 0) {
+    if (probeLocked && probe.mismatch && regressed.length === 0 && snapshotMismatches.length === 0) {
       console.log(`반려: 프로브 락(--probe-locked) 위반 — 프로브 드리프트 감지.`);
     } else {
-      console.log(`반려: 동결 계약 회귀 ${regressed.length}건, 결정성 버그 ${determinismBugs.length}건.`);
+      console.log(`반려: 동결 계약 회귀 ${regressed.length}건, 스냅샷 불일치 ${snapshotMismatches.length}건.`);
     }
     process.exitCode = 1;
     return;

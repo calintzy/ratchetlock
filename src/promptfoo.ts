@@ -148,10 +148,12 @@ function normalizeRow(row: Record<string, any>): CaseResult {
  * 그 토큰은 config의 file:// 경로 형태에 따라 상대("prompt_v2.txt")일 수도, 절대("/…/prompt_v2.txt")일
  * 수도 있다(결정적 check의 replay config는 file://를 절대경로로 재작성하므로 후자가 된다) — 어느 쪽이든
  * basename만 취해 ratchet.json의 파일명과 일치시킨다. 접두부 형식이 아닌 label은 전체를 그대로 폴백한다.
+ * 경로에 공백이 있으면(예: "/dir with space/prompt_v2.txt: …") \S+로는 첫 공백에서 끊겨 basename을
+ * 오추출하므로, 구분자 "`: `"(콜론+공백) 앞까지 비탐욕 매칭한다 — 파일 경로에는 콜론+공백이 없다.
  */
 function extractPromptId(label: unknown): string {
   const text = typeof label === "string" ? label : "";
-  const match = text.match(/^(\S+):\s/);
+  const match = text.match(/^(.+?):\s/);
   return match ? basename(match[1]) : text;
 }
 
@@ -230,7 +232,11 @@ function replaceProvidersBlock(text: string, replayProviderAbsPath: string): str
     }
   }
 
-  const replacement = ["providers:", `  - id: 'exec: node ${replayProviderAbsPath}'`];
+  // exec 문자열은 promptfoo의 parseScriptParts가 공백으로 토큰 분해하므로(실측 확인: 공백 경로에서
+  // RESULT_COUNT=0), 경로를 큰따옴표로 감싼다 — parseScriptParts는 "..." 그룹을 존중한다.
+  // YAML 스칼라는 작은따옴표라, 경로 내 작은따옴표만 ''로 이스케이프하면 스칼라가 깨지지 않는다.
+  const yamlSafePath = replayProviderAbsPath.replace(/'/g, "''");
+  const replacement = ["providers:", `  - id: 'exec: node "${yamlSafePath}"'`];
   lines.splice(startIdx, endIdx - startIdx, ...replacement);
   return lines.join("\n");
 }

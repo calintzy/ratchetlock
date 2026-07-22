@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 
 /** ratchet.json §3.3 스키마 — 계획 docs/PLAN.md 참조. */
 
@@ -63,9 +63,17 @@ export function stateExists(filePath: string): boolean {
 }
 
 export function loadState(filePath: string): RatchetState {
-  return JSON.parse(readFileSync(filePath, "utf-8")) as RatchetState;
+  const text = readFileSync(filePath, "utf-8");
+  try {
+    return JSON.parse(text) as RatchetState;
+  } catch (error) {
+    throw new Error(`ratchet.json 파싱 실패(${filePath}): ${(error as Error).message}`);
+  }
 }
 
+/** 임시 파일에 쓰고 rename으로 교체한다 — 쓰기 중 크래시로 ratchet.json이 반쪽 손상되는 것을 막는다. */
 export function saveState(filePath: string, state: RatchetState): void {
-  writeFileSync(filePath, `${JSON.stringify(state, null, 2)}\n`, "utf-8");
+  const tmpPath = `${filePath}.tmp-${process.pid}`;
+  writeFileSync(tmpPath, `${JSON.stringify(state, null, 2)}\n`, "utf-8");
+  renameSync(tmpPath, filePath);
 }

@@ -5,6 +5,10 @@
   "bin": {
     "ratchetlock": "dist/cli.js"
   },
+  "files": [
+    "dist",
+    "src/replay-provider.js"
+  ],
   "type": "commonjs",
   "scripts": {
     "build": "tsc && cp src/replay-provider.js dist/replay-provider.js",

@@ -17,6 +17,18 @@ function stripFilePrefix(value: string): string {
   return value.replace(/^file:\/\//, "");
 }
 
+/** hashFile의 ENOENT를 "어느 파일이 없는지" 명확한 에러로 래핑한다(누락 프롬프트/프로브 파일 진단). */
+function hashFileOrExplain(filePath: string): string {
+  try {
+    return hashFile(filePath);
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      throw new Error(`파일을 찾을 수 없습니다: ${filePath}`);
+    }
+    throw error;
+  }
+}
+
 /**
  * promptfoo config(YAML)에서 prompts/tests/probes를 추출한다.
  * 범용 YAML 파서가 아니라 promptfoo config의 알려진 부분집합만 다룬다
@@ -38,7 +50,7 @@ export function extractConfigRefs(yamlText: string): ExtractedTarget {
   }
 
   const testsMatch = yamlText.match(/^tests:\s*(.+)$/m);
-  const tests = testsMatch ? stripQuotes(testsMatch[1]) : "";
+  const tests = testsMatch ? stripFilePrefix(stripQuotes(testsMatch[1])) : "";
 
   const probes: string[] = [];
   const jsAssertRegex = /-\s*type:\s*javascript[\s\S]*?value:\s*(\S+)/g;
@@ -89,12 +101,12 @@ export async function runInit(args: string[]): Promise<void> {
 
   const promptHashes: Record<string, string> = {};
   for (const prompt of prompts) {
-    promptHashes[prompt] = hashFile(resolve(configDir, prompt));
+    promptHashes[prompt] = hashFileOrExplain(resolve(configDir, prompt));
   }
 
   const probeHashes: Record<string, string> = {};
   for (const probe of probes) {
-    probeHashes[probe] = hashFile(resolve(configDir, probe));
+    probeHashes[probe] = hashFileOrExplain(resolve(configDir, probe));
   }
 
   const state: RatchetState = {
@@ -114,7 +126,9 @@ export async function runInit(args: string[]): Promise<void> {
     failCases: [],
   };
 
-  const outPath = join(configDir, "ratchet.json");
+  // ratchet.json은 cwd에 쓴다 — check/freeze/status/add-fail가 모두 cwd에서 읽으므로(config 디렉토리에서
+  // 실행하는 것을 전제한다). configDir에 쓰면 다른 커맨드가 못 찾는 불일치가 생긴다.
+  const outPath = join(cwd, "ratchet.json");
   saveState(outPath, state);
 
   console.log(`ratchet.json 생성됨: ${outPath}`);

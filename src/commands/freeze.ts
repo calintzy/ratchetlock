@@ -1,4 +1,3 @@
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { parseArgs } from "node:util";
 import { dirname, resolve } from "node:path";
 import {
@@ -11,6 +10,7 @@ import {
   type FrozenSnapshot,
 } from "../state.js";
 import { runEval, type CaseResult } from "../promptfoo.js";
+import { writeLastEval } from "../lastEval.js";
 
 /** freeze 커맨드 — §4/§5 T4, require-green 사전조건 + frozen[] 스냅샷 append. */
 
@@ -61,21 +61,6 @@ export function combinedProbeHash(probeHashes: Record<string, string>): string {
 
 function resolveRatchetPath(cwd: string): string {
   return resolve(cwd, "ratchet.json");
-}
-
-function resolveLastEvalPath(cwd: string): string {
-  return resolve(cwd, ".ratchet", "last-eval.json");
-}
-
-/** 직전 eval 런 아티팩트를 덮어쓴다(§3.4 MINOR — 상태가 아닌 캐시, add-fail --from-last가 읽는다). */
-function writeLastEval(cwd: string, results: CaseResult[]): void {
-  const outPath = resolveLastEvalPath(cwd);
-  mkdirSync(dirname(outPath), { recursive: true });
-  writeFileSync(
-    outPath,
-    `${JSON.stringify({ evaluatedAt: new Date().toISOString(), results }, null, 2)}\n`,
-    "utf-8",
-  );
 }
 
 export async function runFreeze(args: string[]): Promise<void> {

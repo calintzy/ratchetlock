@@ -135,7 +135,14 @@ function addFromLast(
     return;
   }
 
-  const lastEval = JSON.parse(readFileSync(lastEvalPath, "utf-8")) as LastEvalFile;
+  let lastEval: LastEvalFile;
+  try {
+    lastEval = JSON.parse(readFileSync(lastEvalPath, "utf-8")) as LastEvalFile;
+  } catch (error) {
+    console.error(`last-eval.json 파싱 실패(${lastEvalPath}): ${(error as Error).message}`);
+    process.exitCode = 1;
+    return;
+  }
   const row = findLastEvalCase(lastEval.results, targetPrompt, caseId);
   if (!row) {
     console.error(`직전 eval 결과에서 케이스를 찾을 수 없습니다: (${targetPrompt}, ${caseId})`);

@@ -40,26 +40,27 @@ section() { echo; echo "== $1 =="; }
 
 # fixture(promptfoo -o 캡처)에서 (description -> output) replay map을 뽑는다.
 # replay-provider.js가 이 맵을 caseId(description) 키로 되돌린다.
+# 인자는 셸 문자열 보간이 아니라 process.argv로 넘긴다(경로에 따옴표·공백·특수문자가 있어도 안전).
 build_replay_map() {
-  local fixture_file="$1" prompt_filter="$2" out_file="$3"
-  node -e "
-    const fs = require('fs'); const path = require('path');
+  node -e '
+    const fs = require("fs"); const path = require("path");
+    const [fixtureFile, promptFilter, outFile] = process.argv.slice(1);
     function extractPromptId(label) {
-      const m = (label || '').match(/^(\\S+):\\s/);
-      return m ? path.basename(m[1]) : (label || '');
+      const m = (label || "").match(/^(.+?):\s/);
+      return m ? path.basename(m[1]) : (label || "");
     }
-    const data = JSON.parse(fs.readFileSync('$fixture_file', 'utf-8'));
+    const data = JSON.parse(fs.readFileSync(fixtureFile, "utf-8"));
     const rows = data.results.results;
     const map = {};
     for (const r of rows) {
       const pid = extractPromptId(r.prompt && r.prompt.label);
-      if ('$prompt_filter' && pid !== '$prompt_filter') continue;
+      if (promptFilter && pid !== promptFilter) continue;
       const desc = r.testCase && r.testCase.description;
       const out = r.response && r.response.output;
-      if (desc) map[desc] = typeof out === 'string' ? out : JSON.stringify(out);
+      if (desc) map[desc] = typeof out === "string" ? out : JSON.stringify(out);
     }
-    fs.writeFileSync('$out_file', JSON.stringify(map, null, 2) + '\n');
-  "
+    fs.writeFileSync(outFile, JSON.stringify(map, null, 2) + "\n");
+  ' "$1" "$2" "$3"
 }
 
 # promptfooconfig.yaml의 providers를 replay-provider.js로 일시 치환하고 ratchetlock 명령을

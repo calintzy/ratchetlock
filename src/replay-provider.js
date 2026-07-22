@@ -46,7 +46,11 @@ try {
 }
 
 const description = context.test && context.test.description;
-const varsKey = hashContent(JSON.stringify((context.test && context.test.vars) || context.vars || {}));
+// vars 폴백 우선순위는 어댑터(src/promptfoo.ts extractCaseId: row.vars ?? row.testCase.vars)와 반드시
+// 동일해야 저장 키와 어긋나지 않는다 — context.vars(=row.vars) 우선, context.test.vars(=row.testCase.vars) 폴백.
+const varsKey = hashContent(
+  JSON.stringify(context.vars ?? (context.test && context.test.vars) ?? {}),
+);
 
 const caseKey =
   typeof description === "string" &&

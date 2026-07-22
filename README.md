@@ -37,6 +37,9 @@ npm run build
 | `add-fail` | 방금 잡은 실패를 영구 회귀 가드로 등록한다. 프롬프트를 바꿔도 계속 지켜진다. |
 | `status` | 활성 프롬프트, 동결 수, floor 크기, 프롬프트·프로브 드리프트를 보여준다. |
 
+모든 커맨드는 `promptfooconfig.yaml`이 있는 디렉토리에서 실행한다. `init`이 만든 `ratchet.json`이 그
+디렉토리에 놓이고, 나머지 커맨드는 현재 디렉토리에서 이 파일을 읽는다.
+
 기본 `check`와 `freeze`는 결정적으로 동작한다 — 동결해 둔 모델 출력을 되돌려 현재 프로브로 다시 채점하므로
 LLM을 부르지 않는다. 프롬프트를 실제로 바꿔 새로 평가해 보고 싶으면 `--live`를 붙인다. 왜 이렇게
 나눴는지는 [ARCHITECTURE.md](ARCHITECTURE.md)에 적어 뒀다.
@@ -66,7 +69,7 @@ bash examples/cardnews/demo.sh
 **claude 구독이나 API 키가 없어도 끝까지 돈다.** 기본이 fixture 재생 모드이기 때문이다 — `fixtures/`에 저장해
 둔 실제 claude 출력을 되돌려 현재 프로브로 다시 채점하므로 LLM을 새로 부르지 않는다. `init`으로 시작해서,
 v1이 진짜 0/5임을 확인하고, 그 실패들을 `add-fail`로 등록하고, v2로 넘어가 4건을 `freeze`하고, 결정적
-`check`가 전부 통과하는 걸 exit 0으로 확인한다. 중간에 동결 출력 하나를 일부러 망가뜨려 `check`가 회귀를
+`check`가 전부 통과하는 걸 exit 0으로 확인한다. 중간에 동결 출력 하나를 일부러 망가뜨려 `check`가 그걸
 잡아내는 것까지 보여준다. 실행 로그 전문은 [TRANSCRIPT.md](examples/cardnews/TRANSCRIPT.md)에 그대로 있다.
 
 ## 프레이밍 체크는 "의미 왜곡 검출"이 아니다

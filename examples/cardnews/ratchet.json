@@ -9,7 +9,7 @@
     "probes": [
       "asserts.js"
     ],
-    "tests": "file://tests.yaml"
+    "tests": "tests.yaml"
   },
   "activePrompt": "prompt.txt",
   "current": {
