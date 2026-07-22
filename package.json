@@ -12,6 +12,7 @@
   "type": "commonjs",
   "scripts": {
     "build": "tsc && cp src/replay-provider.js dist/replay-provider.js",
+    "prepare": "npm run build",
     "test": "node --test"
   },
   "dependencies": {
