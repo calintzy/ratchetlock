@@ -16,6 +16,8 @@ export interface StatusReport {
   currentPromptHash: string | null;
   currentProbeHash: string | null;
   frozenCount: number;
+  /** 동결 스냅샷 묶음 내부의 케이스 총수(묶음 수와 혼동 방지용 병기) */
+  frozenCaseCount: number;
   floorSize: number;
   failCases: FailCase[];
   promptDrift: boolean;
@@ -41,6 +43,7 @@ export function computeStatus(state: RatchetState, live: LiveHashes): StatusRepo
     currentPromptHash: live.promptHash,
     currentProbeHash: live.probeHash,
     frozenCount: state.frozen.length,
+    frozenCaseCount: state.frozen.reduce((n, snap) => n + Object.keys(snap.cases).length, 0),
     floorSize: deriveFloor(state).caseIds.length,
     failCases: state.failCases,
     promptDrift,
@@ -89,7 +92,7 @@ export async function runStatus(_args: string[]): Promise<void> {
   console.log(`activePrompt: ${report.activePrompt}`);
   console.log(`current prompt hash: ${report.currentPromptHash ?? "(없음)"}`);
   console.log(`current probe hash: ${report.currentProbeHash ?? "(없음)"}`);
-  console.log(`frozen: ${report.frozenCount}건`);
+  console.log(`frozen: ${report.frozenCount}건 (케이스 ${report.frozenCaseCount}건)`);
   console.log(`floor 크기: ${report.floorSize}건`);
   console.log(
     `drift: prompt=${report.promptDrift ? "예" : "아니오"}, probe=${report.probeDrift ? "예" : "아니오"}`,

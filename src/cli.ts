@@ -4,6 +4,7 @@ import { runCheck } from "./commands/check.js";
 import { runFreeze } from "./commands/freeze.js";
 import { runAddFail } from "./commands/addFail.js";
 import { runStatus } from "./commands/status.js";
+import { runLint } from "./commands/lint.js";
 
 async function main(): Promise<void> {
   const [subcommand, ...rest] = process.argv.slice(2);
@@ -33,7 +34,12 @@ async function main(): Promise<void> {
     return;
   }
 
-  console.error("Usage: ratchetlock <init|check|freeze|add-fail|status> [options]");
+  if (subcommand === "lint") {
+    await runLint(rest);
+    return;
+  }
+
+  console.error("Usage: ratchetlock <init|check|freeze|add-fail|status|lint> [options]");
   process.exitCode = 1;
 }
 

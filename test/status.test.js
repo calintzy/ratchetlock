@@ -49,3 +49,21 @@ test("computeStatus는 라이브 해시를 currentPromptHash/currentProbeHash로
   assert.equal(report.currentPromptHash, "sha256:LIVE_P");
   assert.equal(report.currentProbeHash, "sha256:LIVE_PROBE");
 });
+
+test("frozenCaseCount는 스냅샷 묶음 내부 케이스 총수를 센다(묶음 수와 혼동 방지, 항목 5)", () => {
+  const state = makeState();
+  // 스냅샷 1건에 케이스 6건 — status는 'frozen: 1건 (케이스 6건)'으로 병기해야 한다.
+  state.frozen = [
+    {
+      id: "s1",
+      promptId: "p.txt",
+      note: "",
+      promptHash: "sha256:P",
+      probeHash: "sha256:FROZEN",
+      cases: { a: {}, b: {}, c: {}, d: {}, e: {}, f: {} },
+    },
+  ];
+  const report = computeStatus(state, { promptHash: "sha256:P", probeHash: "sha256:FROZEN" });
+  assert.equal(report.frozenCount, 1);
+  assert.equal(report.frozenCaseCount, 6);
+});
