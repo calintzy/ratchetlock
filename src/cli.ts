@@ -1,13 +1,31 @@
 #!/usr/bin/env node
 import { runInit } from "./commands/init.js";
+import { runFreeze } from "./commands/freeze.js";
+import { runAddFail } from "./commands/addFail.js";
+import { runStatus } from "./commands/status.js";
 
-const NOT_IMPLEMENTED = new Set(["check", "freeze", "add-fail", "status"]);
+const NOT_IMPLEMENTED = new Set(["check"]);
 
 async function main(): Promise<void> {
   const [subcommand, ...rest] = process.argv.slice(2);
 
   if (subcommand === "init") {
     await runInit(rest);
+    return;
+  }
+
+  if (subcommand === "freeze") {
+    await runFreeze(rest);
+    return;
+  }
+
+  if (subcommand === "add-fail") {
+    await runAddFail(rest);
+    return;
+  }
+
+  if (subcommand === "status") {
+    await runStatus(rest);
     return;
   }
 
