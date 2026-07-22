@@ -26,23 +26,17 @@ ratchetlock이 하는 일은 그 기억을 붙이는 것 하나다.
 
 ## 설치
 
-GitHub에서 바로 전역 설치한다 (`prepare` 스크립트가 빌드를 대신 돌린다).
-
-```bash
-npm install -g github:calintzy/ratchetlock
-ratchetlock status   # 동작 확인
-```
-
-리포를 받아서 개발하려면:
-
 ```bash
 git clone https://github.com/calintzy/ratchetlock.git
 cd ratchetlock
-npm install && npm run build
+npm install          # prepare 훅이 빌드까지 돌린다
 npm link             # ratchetlock 커맨드를 PATH에 등록
 ```
 
-런타임 의존성은 promptfoo 하나다. 나머지는 전부 Node 표준 라이브러리로 돌아간다.
+이후 어디서든 `ratchetlock <커맨드>`로 쓴다. 걷어내려면 `npm unlink -g ratchetlock`.
+
+런타임 의존성은 promptfoo 하나다. 나머지는 전부 Node 표준 라이브러리로 돌아간다. (npm 레지스트리 배포 전이라
+`npm install -g ratchetlock`은 아직 없다.)
 
 ## 커맨드
 
