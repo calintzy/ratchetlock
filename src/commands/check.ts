@@ -319,7 +319,17 @@ export async function runCheck(args: string[]): Promise<void> {
           initial,
           targetPrompt,
           retry,
-          (caseIds) => runEval({ configPath, filterPattern: buildFilterPattern(caseIds) }),
+          // 재시도는 실패 케이스에 동일한 prompt+provider config를 다시 태운다 — promptfoo 기본
+          // 캐시(활성)를 그대로 두면 (provider config, 렌더된 프롬프트) 키가 초기 실패 응답에
+          // 캐시 히트해 provider가 재실행되지 않는다(재시도가 no-op). 캐시를 무효화해야 매 재시도가
+          // fresh 라이브 재생성이 된다(verifier catch). 초기 eval의 캐시 정책은 유지 — 초기는
+          // 통과 케이스를 캐시로 빠르게 확정하고, 재생성이 필요한 것은 실패 케이스뿐이기 때문.
+          (caseIds) =>
+            runEval({
+              configPath,
+              filterPattern: buildFilterPattern(caseIds),
+              extraEnv: { PROMPTFOO_CACHE_ENABLED: "false" },
+            }),
           (msg) => console.log(msg),
         );
         results = outcome.results;

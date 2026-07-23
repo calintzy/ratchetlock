@@ -113,7 +113,15 @@ export async function runFreeze(args: string[]): Promise<void> {
         initial,
         targetPrompt,
         retry,
-        (caseIds) => runEval({ configPath, filterPattern: buildFilterPattern(caseIds) }),
+        // 재시도는 동일 prompt+provider를 다시 태우므로 promptfoo 기본 캐시(활성)를 두면 초기 실패
+        // 응답에 캐시 히트해 provider가 재실행되지 않는다(no-op). 캐시 무효화로 fresh 재생성 보장
+        // (verifier catch — check.ts 재시도 경로와 동일 근거).
+        (caseIds) =>
+          runEval({
+            configPath,
+            filterPattern: buildFilterPattern(caseIds),
+            extraEnv: { PROMPTFOO_CACHE_ENABLED: "false" },
+          }),
         (msg) => console.log(msg),
       );
       results = outcome.results;
