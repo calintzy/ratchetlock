@@ -13,6 +13,7 @@ import { createReplayConfig, runEval, type CaseResult } from "../promptfoo.js";
 import { combinedProbeHash } from "./freeze.js";
 import { writeLastEval } from "../lastEval.js";
 import { deriveFloor, latestFrozenFor, type FloorResult } from "../floor.js";
+import { buildFilterPattern, parseRetry, retryFailedLiveCases } from "../retry.js";
 
 /**
  * check 게이트 — §4/§5 T3. 동결된 계약(floor)이 여전히 통과하는지 검사하고 회귀 시 exit 1.
@@ -233,6 +234,7 @@ export async function runCheck(args: string[]): Promise<void> {
       prompt: { type: "string" },
       live: { type: "boolean", default: false },
       "probe-locked": { type: "boolean", default: false },
+      retry: { type: "string" },
     },
     allowPositionals: false,
   });
@@ -260,6 +262,20 @@ export async function runCheck(args: string[]): Promise<void> {
   const configPath = resolve(cwd, state.target.config);
   const live = Boolean(values.live);
   const probeLocked = Boolean(values["probe-locked"]);
+
+  let retry: number;
+  try {
+    retry = parseRetry(values.retry);
+  } catch (error) {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exitCode = 1;
+    return;
+  }
+  // --retry는 라이브 비결정성 대응 — 결정적 replay 경로에선 출력이 고정이라 무의미하다(무시+경고).
+  if (retry > 0 && !live) {
+    console.error("[경고] --retry는 --live에서만 유효합니다 — 결정적 replay 경로에선 무시합니다.");
+    retry = 0;
+  }
 
   const snapshot = latestFrozenFor(state, targetPrompt);
 
@@ -294,9 +310,26 @@ export async function runCheck(args: string[]): Promise<void> {
 
   let results: CaseResult[];
   try {
-    results = live
-      ? await runEval({ configPath })
-      : await runReplayEval(cwd, configPath, replayMap);
+    if (!live) {
+      results = await runReplayEval(cwd, configPath, replayMap);
+    } else {
+      const initial = await runEval({ configPath });
+      if (retry > 0) {
+        const outcome = await retryFailedLiveCases(
+          initial,
+          targetPrompt,
+          retry,
+          (caseIds) => runEval({ configPath, filterPattern: buildFilterPattern(caseIds) }),
+          (msg) => console.log(msg),
+        );
+        results = outcome.results;
+        for (const [caseId, attempt] of outcome.passedOnRetry) {
+          console.log(`${caseId}: 재시도 ${attempt}/${retry}에 통과`);
+        }
+      } else {
+        results = initial;
+      }
+    }
   } catch (error) {
     console.error(error instanceof Error ? error.message : String(error));
     process.exitCode = 1;

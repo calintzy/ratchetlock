@@ -39,7 +39,17 @@ async function main(): Promise<void> {
     return;
   }
 
-  console.error("Usage: ratchetlock <init|check|freeze|add-fail|status|lint> [options]");
+  console.error(
+    [
+      "Usage: ratchetlock <init|check|freeze|add-fail|status|lint> [options]",
+      "",
+      "  check [--prompt <id>] [--live] [--probe-locked] [--retry <N>]",
+      "  freeze [--prompt <id>] [--note <text>] [--allow-partial] [--retry <N>]",
+      "",
+      "  --retry <N>  라이브 형식 위반 시 실패 케이스만 최대 N회 재생성(기본 0=재시도 없음).",
+      "               --live/freeze에서만 유효 — 결정적 replay 경로에선 무시된다.",
+    ].join("\n"),
+  );
   process.exitCode = 1;
 }
 

@@ -11,6 +11,7 @@ import {
 } from "../state.js";
 import { runEval, type CaseResult } from "../promptfoo.js";
 import { writeLastEval } from "../lastEval.js";
+import { buildFilterPattern, parseRetry, retryFailedLiveCases } from "../retry.js";
 
 /** freeze 커맨드 — §4/§5 T4, require-green 사전조건 + frozen[] 스냅샷 append. */
 
@@ -70,6 +71,7 @@ export async function runFreeze(args: string[]): Promise<void> {
       prompt: { type: "string" },
       note: { type: "string" },
       "allow-partial": { type: "boolean", default: false },
+      retry: { type: "string" },
     },
     allowPositionals: false,
   });
@@ -92,10 +94,35 @@ export async function runFreeze(args: string[]): Promise<void> {
     return;
   }
 
+  let retry: number;
+  try {
+    retry = parseRetry(values.retry);
+  } catch (error) {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exitCode = 1;
+    return;
+  }
+
   const configPath = resolve(cwd, state.target.config);
   let results: CaseResult[];
   try {
-    results = await runEval({ configPath });
+    const initial = await runEval({ configPath });
+    // freeze는 항상 라이브 eval이라 --retry가 그대로 유효하다(비결정 형식 위반을 케이스별로 재생성).
+    if (retry > 0) {
+      const outcome = await retryFailedLiveCases(
+        initial,
+        targetPrompt,
+        retry,
+        (caseIds) => runEval({ configPath, filterPattern: buildFilterPattern(caseIds) }),
+        (msg) => console.log(msg),
+      );
+      results = outcome.results;
+      for (const [caseId, attempt] of outcome.passedOnRetry) {
+        console.log(`${caseId}: 재시도 ${attempt}/${retry}에 통과`);
+      }
+    } else {
+      results = initial;
+    }
   } catch (error) {
     console.error(error instanceof Error ? error.message : String(error));
     process.exitCode = 1;

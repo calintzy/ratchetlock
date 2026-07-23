@@ -33,6 +33,12 @@ export interface RunEvalOptions {
   outPath?: string;
   /** 기본 env에 덧씌울 추가 환경변수(예: RATCHETLOCK_REPLAY_FILE) */
   extraEnv?: Record<string, string>;
+  /**
+   * promptfoo `--filter-pattern <regex>`로 넘길 정규식. description(=caseId)이 이 패턴에
+   * 매칭되는 케이스만 실행한다. 케이스별 재시도(--retry, src/retry.ts)가 실패 케이스만 다시
+   * 태울 때 쓴다. 미지정이면 전건 실행(기존 동작).
+   */
+  filterPattern?: string;
   timeoutMs?: number;
 }
 
@@ -64,12 +70,17 @@ export async function runEval(options: RunEvalOptions): Promise<CaseResult[]> {
     ...options.extraEnv,
   };
 
+  const evalArgs = ["promptfoo", "eval", "-c", configPath, "-o", outPath, "--no-progress-bar"];
+  if (options.filterPattern) {
+    evalArgs.push("--filter-pattern", options.filterPattern);
+  }
+
   try {
-    await execFileAsync(
-      "npx",
-      ["promptfoo", "eval", "-c", configPath, "-o", outPath, "--no-progress-bar"],
-      { cwd: baseDir, env, timeout: options.timeoutMs ?? DEFAULT_TIMEOUT_MS },
-    );
+    await execFileAsync("npx", evalArgs, {
+      cwd: baseDir,
+      env,
+      timeout: options.timeoutMs ?? DEFAULT_TIMEOUT_MS,
+    });
   } catch (error) {
     throw explainExecError(error);
   }
