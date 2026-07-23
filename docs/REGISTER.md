@@ -85,6 +85,15 @@ defaultTest:
 tests: file://tests.yaml
 ```
 
+`providers`가 부르는 `provider.sh` 실물도 봐 두면 갭이 사라진다. 규약은 하나뿐이다 — promptfoo가
+변수를 채운 최종 프롬프트를 **첫 인자**로 넘겨준다.
+
+```bash
+#!/usr/bin/env bash
+# $1: promptfoo가 렌더링을 마친 프롬프트 문자열
+claude -p "$1"
+```
+
 ## 2단계 — init
 
 설정을 읽어 프롬프트·프로브·테스트를 뽑고 `ratchet.json`을 만든다. 읽기 전용 스캔이라 모델을
@@ -94,6 +103,9 @@ tests: file://tests.yaml
 cd my-prompts/            # promptfooconfig.yaml이 있는 곳
 ratchetlock init
 ```
+
+서브커맨드에 `--help`는 아직 없다(예: `ratchetlock init --help`는 Unknown option 에러). 옵션은 이
+문서와 [AGENTS.md](../AGENTS.md)의 커맨드 계약 표를 참고한다.
 
 ## 3단계 — check --live로 라이브 통과 확인
 
@@ -107,6 +119,10 @@ ratchetlock check --live
 `통과:` verdict가 뜨면 전 케이스가 통과한 것이고, `반려:`면 어떤 케이스가 왜 실패했는지 stdout에
 나온다. 라이브 통과는 근사치다 — 계약 평가는 프로덕션과 모델·컨텍스트·호출 방식이 다를 수 있어,
 통과가 프로덕션 게이트를 대체하지는 않는다([README의 "정직한 한계"](../README.md#정직한-한계)).
+
+최초 등록 시점에는 아직 동결분이 없어 verdict에 `floor 0건`처럼 찍힐 수 있다. 이건 라이브 평가가
+안 돈 게 아니다 — **라이브 평가는 실행됐고, 그 결과를 대조할 기준선(floor)이 아직 비어 있다**는
+뜻이다. 통과 여부는 그 옆의 회귀 판정으로 본다.
 
 ## 4단계 — freeze로 기준선을 동결한다 (전부 통과 / 부분 통과 분기)
 
@@ -128,7 +144,10 @@ ratchetlock freeze --allow-partial --note "초기 등록 — OmniRoute 미동결
 깨진 상태를 이걸로 덮으면 도구의 존재 이유가 사라진다. 어떤 케이스를 왜 미동결로 남겼는지는
 `--note`나 등록 기록에 남겨 둔다.
 
-## 5단계 — add-fail로 알려진 실패를 영구 가드로 승격한다
+## 5단계 — add-fail로 알려진 실패를 영구 가드로 승격한다 (선택)
+
+이 단계는 선택이다 — **이미 겪어 본 실패 유형이 있을 때만** 필요하다. 그런 유형이 없으면 4단계에서
+바로 다음 단계로 넘어간다.
 
 이미 겪어 본 실패 유형이 있으면, 그 실패를 재현하는 입력을 `tests.yaml`에 넣고 직전 평가에서 잡힌
 실패를 영구 회귀 가드로 등록한다. 한번 등록한 실패 가드는 프롬프트를 어떻게 고쳐도 계속 통과를
@@ -140,6 +159,16 @@ ratchetlock add-fail --from-last "<케이스 이름>"
 
 `--from-last`는 직전 평가의 정규화 결과(`.ratchet/last-eval.json`)에서 그 케이스의 실패를 읽어
 등록한다. 그래서 3단계의 `check --live`나 4단계 `freeze` 직후에 돌려야 한다.
+
+## 6단계 — 결정적 check로 등록 마무리를 확인한다
+
+동결과 (필요하면) add-fail까지 끝났으면, CI에 맡기기 전에 로컬에서 결정적 `check`가 exit 0인지 직접
+확인한다. 방금 만든 계약이 그 자리에서 바로 재현되는지 보는 마지막 게이트다.
+
+```bash
+ratchetlock check
+echo $?   # 0이면 등록 완료, 0이 아니면 위 단계로 돌아가 확인한다
+```
 
 여기까지 하면 등록이 끝난다. 이후 프롬프트를 고칠 때의 루프(수정 → `check --live` → `freeze`)와
 새 버전 파일을 만드는 규칙은 [README의 "사용 흐름"](../README.md#사용-흐름)에 있다.
