@@ -1,6 +1,6 @@
 {
   "name": "ratchetlock",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "프롬프트 계약 래칫 CLI — promptfoo 위에 동결/실패누적/버전관리 레이어를 얹는다.",
   "license": "MIT",
   "bin": {
